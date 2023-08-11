@@ -46,7 +46,6 @@
             this.Title.TabIndex = 1;
             this.Title.Text = "QSOLink Logbook";
             this.Title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Title.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -99,7 +98,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Title);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "QSOLink Logbook";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -51,7 +51,7 @@
             this.label1.Size = new System.Drawing.Size(129, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Add your contact";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // IsDX
             // 
@@ -62,7 +62,7 @@
             this.IsDX.TabIndex = 1;
             this.IsDX.Text = "Is DX?";
             this.IsDX.UseVisualStyleBackColor = true;
-            this.IsDX.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            //this.IsDX.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button1
             // 
@@ -80,7 +80,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            //this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // Country_Textfield
             // 
@@ -88,7 +88,7 @@
             this.Country_Textfield.Name = "Country_Textfield";
             this.Country_Textfield.Size = new System.Drawing.Size(131, 20);
             this.Country_Textfield.TabIndex = 4;
-            this.Country_Textfield.TextChanged += new System.EventHandler(this.Country_Textfield_TextChanged);
+            //this.Country_Textfield.TextChanged += new System.EventHandler(this.Country_Textfield_TextChanged);
             // 
             // CountryLabel
             // 
@@ -114,7 +114,7 @@
             this.CallSign_Textfield.Name = "CallSign_Textfield";
             this.CallSign_Textfield.Size = new System.Drawing.Size(131, 20);
             this.CallSign_Textfield.TabIndex = 6;
-            this.CallSign_Textfield.TextChanged += new System.EventHandler(this.CallSign_Textfield_TextChanged);
+            //this.CallSign_Textfield.TextChanged += new System.EventHandler(this.CallSign_Textfield_TextChanged);
             // 
             // Mode_ComboBox
             // 
@@ -174,7 +174,7 @@
             this.Mode_ComboBox.Name = "Mode_ComboBox";
             this.Mode_ComboBox.Size = new System.Drawing.Size(131, 21);
             this.Mode_ComboBox.TabIndex = 8;
-            this.Mode_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Mode_ComboBox_SelectedIndexChanged);
+            //this.Mode_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Mode_ComboBox_SelectedIndexChanged);
             // 
             // ModeLabel
             // 
@@ -192,7 +192,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(305, 81);
             this.richTextBox1.TabIndex = 10;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            //this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // label5
             // 
@@ -202,7 +202,7 @@
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Custom comments";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            //this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // AddContact
             // 
@@ -223,7 +223,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddContact";
             this.Text = "AddContact";
-            this.Load += new System.EventHandler(this.AddContact_Load);
+            //this.Load += new System.EventHandler(this.AddContact_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
