@@ -24,6 +24,7 @@ namespace QSOLink_Logbook
         {
             ContactInfo contact = new ContactInfo
             {
+                indexNumber = contacts.Count,
                 CallSign = CallSign_Textfield.Text,
                 Country = Country_Textfield.Text,
                 Mode = Mode_ComboBox.SelectedItem?.ToString(),

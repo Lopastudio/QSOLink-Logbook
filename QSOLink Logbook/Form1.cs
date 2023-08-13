@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace QSOLink_Logbook
 {
-    public partial class Form1 : Form
+    public partial class QSOLinkLogBookWindow : Form
     {
+        public string Version = "Alpha1.0";
+
         private AddContact AddContactForm = new AddContact();
         private List<ContactInfo> contacts = new List<ContactInfo>();
 
-        public Form1()
+        public QSOLinkLogBookWindow()
         {
             InitializeComponent();
+            label1.Text = Version;
+            RefreshContacts();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,20 +57,38 @@ namespace QSOLink_Logbook
             }
         }
 
-        private void refreshButton_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            
+
+            EditContact editContactForm = new EditContact(rowIndex);
+            editContactForm.Show();
+        }
+
+
+
+
+        private void Title_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hmm. What a cool easteregg.");
+        }
+
+        private void EditButton_TEMP_Click(object sender, EventArgs e)
         {
             RefreshContacts();
         }
+    }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+    public class Values
+    {
+        public int rowIndex { get; set; }
     }
 
     [Serializable]
     public class ContactInfo
     {
+        public int indexNumber {  get; set; }
         public string CallSign { get; set; }
         public string Country { get; set; }
         public string Mode { get; set; }

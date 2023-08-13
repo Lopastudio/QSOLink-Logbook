@@ -1,6 +1,6 @@
 ﻿namespace QSOLink_Logbook
 {
-    partial class AddContact
+    partial class EditContact
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,7 @@
             this.ModeLabel = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -48,9 +49,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 20);
+            this.label1.Size = new System.Drawing.Size(185, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Add your contact";
+            this.label1.Text = "Edit your existing contact";
             // 
             // IsDX
             // 
@@ -110,6 +111,7 @@
             this.CallSign_Textfield.Name = "CallSign_Textfield";
             this.CallSign_Textfield.Size = new System.Drawing.Size(131, 20);
             this.CallSign_Textfield.TabIndex = 6;
+            this.CallSign_Textfield.TextChanged += new System.EventHandler(this.CallSign_Textfield_TextChanged);
             // 
             // Mode_ComboBox
             // 
@@ -196,11 +198,22 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Custom comments";
             // 
-            // AddContact
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Editing callsign";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // EditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 383);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.ModeLabel);
@@ -213,8 +226,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.IsDX);
             this.Controls.Add(this.label1);
-            this.Name = "AddContact";
-            this.Text = "Add contact";
+            this.Name = "EditContact";
+            this.Text = "Edit contact";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +247,6 @@
         private System.Windows.Forms.Label ModeLabel;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
     }
 }
