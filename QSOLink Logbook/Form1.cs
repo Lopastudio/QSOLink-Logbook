@@ -9,7 +9,7 @@ namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "Alpha1.0";
+        public string Version = "Alpha1.1";
 
         private AddContact AddContactForm = new AddContact();
         private List<ContactInfo> contacts = new List<ContactInfo>();
@@ -29,7 +29,8 @@ namespace QSOLink_Logbook
         private void button1_Click(object sender, EventArgs e)
         {
             AddContactForm = new AddContact(contacts);
-            AddContactForm.Show();
+            AddContactForm.ShowDialog();
+            RefreshContacts();
         }
 
         private void RefreshContacts()
@@ -59,15 +60,12 @@ namespace QSOLink_Logbook
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = e.RowIndex;
-            
+            int rowIndex = e.RowIndex + 1;
 
             EditContact editContactForm = new EditContact(rowIndex);
-            editContactForm.Show();
+            editContactForm.ShowDialog(); // Use ShowDialog to wait for the form to close
+            RefreshContacts(); // Refresh the data after the EditContact form closes
         }
-
-
-
 
         private void Title_Click(object sender, EventArgs e)
         {

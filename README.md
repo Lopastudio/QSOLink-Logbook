@@ -1,43 +1,27 @@
-# ![WebApp](https://iharsh234.github.io/WebApp/images/demo/demo_landing.JPG)
-# WebApp
+# ![QsoLink-Logbook](https://www.lopastudio.sk/img/QSOLinkLogBook.png)
+# QsoLink Logbook
 <table>
 <tr>
 <td>
-  A webapp using Quandl API to display history of stock growth in a given period of time. It helps predict the growth of stocks from the  charts of stock performace in any period of time. It helps to judge stocks, with the principle of momentum investing, which returns 1% per month on average.
+  A QSOLink Logbook is a simple digital QSO logging software. It is focused on Ease of Use.
 </td>
 </tr>
 </table>
 
 
 ## Demo
-Here is a working live demo :  https://iharsh234.github.io/WebApp/
-
-
-## Site
-
-### Landing Page
-Currently it is working on all NSE (India) Stocks, BSE (India) Stocks Symbol will be added soon.
-
-![](https://iharsh234.github.io/WebApp/images/demo/web_app_face.JPG)
-
-### Query Filled Form
-![](https://iharsh234.github.io/WebApp/images/demo/demo_query.JPG)
-
-### Charts
-![](https://iharsh234.github.io/WebApp/images/demo/demo_chart1.JPG)
-![](https://iharsh234.github.io/WebApp/images/demo/demo_chart2.JPG)
-![](https://iharsh234.github.io/WebApp/images/demo/demo_chart3.JPG)
-
-
-## Mobile support
-The WebApp is compatible with devices of all sizes and all OS's, and consistent improvements are being made.
-
-![](https://iharsh234.github.io/WebApp/images/demo/mobile.png)
+When the application is going to be in Alpha 2 version, I am going to publish first official compiled version. For now, you will need to compile your own version.
 
 
 
+## Compiling 
 
-## [Usage](https://iharsh234.github.io/WebApp/) 
+1. Download the project files `git clone https://github.com/Lopastudio/QSOLink-Logbook/`
+2. Next, you will need to download Visual Studio 2022 and install dotNET Desktop Development package.
+3. After you opened up the project in Visual Studio, switch the configuration from Debug to Release. This is a dropdown, located on the top left of your screen.
+4. Next, press `CTRL + B` or go to the `Build` tab on the top and click the `Build QSOLink Logbook` button. 
+5. And finally, after building the project, Visual Studio should return an path to the compiled build. It should be located in the project folder. In there go to the `Bin` and the into `Release` folders, and there is your application.
+6. And thats all.
 
 ### Development
 Want to contribute? Great!
@@ -45,39 +29,23 @@ Want to contribute? Great!
 To fix a bug or enhance an existing module, follow these steps:
 
 - Fork the repo
-- Create a new branch (`git checkout -b improve-feature`)
 - Make the appropriate changes in the files
-- Add changes to reflect the changes made
-- Commit your changes (`git commit -am 'Improve feature'`)
-- Push to the branch (`git push origin improve-feature`)
+- Add changes to reflect the changes made.
+- Commit your changes
+- Push to the branch
 - Create a Pull Request 
 
 ### Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/iharsh234/WebApp/issues/new) by including your search query and the expected result.
+If you find a bug, kindly open an issue [here](https://github.com/Lopastudio/QSOLink-Logbook/issues/new) by including your search query and the expected result.
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/iharsh234/WebApp/issues/new). Please include sample queries and their corresponding results.
-
-
-## Built with 
-
-- [jQuery - Ajax](http://www.w3schools.com/jquery/jquery_ref_ajax.asp) - jQuery simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.
-- [Google Chart API](https://developers.google.com/chart/interactive/docs/quick_start) - Free , Rich Gallery , Customizable and Cross-browser compatible.
-- [Bootstrap](http://getbootstrap.com/) - Extensive list of components and  Bundled Javascript plugins.
-
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/Lopastudio/QSOLink-Logbook/issues/new). Please include sample queries and their corresponding results.
 
 ## To-do
-- Add BSE (India) Symbol to the current App.
-- Decide comparison models of Stocks. (suggestions are most welcome).
-- Another WebApp, capable of comparing at least 10 stocks.
+- Add the REMOVE button.
+- Make the interface prettier.
 
-## Team
 
-[![Harsh Vijay](https://avatars1.githubusercontent.com/u/12688534?v=3&s=144)](https://github.com/iharsh234)  | [![Quandl.com](https://github.com/iharsh234/WebApp/blob/master/images/quandl.jpg)](https://www.quandl.com/)
----|---
-[Harsh Vijay ](https://github.com/iharsh234) |[Quandl](https://www.quandl.com)
-
-## [License](https://github.com/iharsh234/WebApp/blob/master/LICENSE.md)
-
-MIT © [Harsh Vijay ](https://github.com/iharsh234)
+## [License](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE.txt)
+This project is licensed under the `Apache License 2.0`.
 

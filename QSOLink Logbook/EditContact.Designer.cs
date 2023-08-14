@@ -41,6 +41,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.RemoveCurrentContact = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +68,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(16, 348);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 23);
+            this.button1.Size = new System.Drawing.Size(149, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Add Contact";
             this.button1.UseVisualStyleBackColor = true;
@@ -208,11 +209,22 @@
             this.label2.Text = "Editing callsign";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // RemoveCurrentContact
+            // 
+            this.RemoveCurrentContact.Location = new System.Drawing.Point(172, 348);
+            this.RemoveCurrentContact.Name = "RemoveCurrentContact";
+            this.RemoveCurrentContact.Size = new System.Drawing.Size(149, 23);
+            this.RemoveCurrentContact.TabIndex = 13;
+            this.RemoveCurrentContact.Text = "Remove this contact";
+            this.RemoveCurrentContact.UseVisualStyleBackColor = true;
+            this.RemoveCurrentContact.Click += new System.EventHandler(this.RemoveCurrentContact_Click);
+            // 
             // EditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 383);
+            this.Controls.Add(this.RemoveCurrentContact);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBox1);
@@ -248,5 +260,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button RemoveCurrentContact;
     }
 }

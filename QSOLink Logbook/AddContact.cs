@@ -20,11 +20,14 @@ namespace QSOLink_Logbook
             this.contacts = contacts;
         }
 
+        // AddContact form
         private void button1_Click(object sender, EventArgs e)
         {
+            int newIndex = contacts.Count + 1; // Get the new index directly
+
             ContactInfo contact = new ContactInfo
             {
-                indexNumber = contacts.Count,
+                indexNumber = newIndex,
                 CallSign = CallSign_Textfield.Text,
                 Country = Country_Textfield.Text,
                 Mode = Mode_ComboBox.SelectedItem?.ToString(),
@@ -39,6 +42,7 @@ namespace QSOLink_Logbook
 
             MessageBox.Show("Contact saved successfully!");
         }
+
 
         private void SaveContactsToBinary()
         {

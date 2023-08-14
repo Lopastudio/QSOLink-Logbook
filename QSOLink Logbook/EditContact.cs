@@ -82,6 +82,31 @@ namespace QSOLink_Logbook
             //nothing
         }
 
+        private void RemoveContact(int indexValue)
+        {
+            ContactInfo contactToRemove = contacts.FirstOrDefault(contact => contact.indexNumber == indexValue);
+
+            if (contactToRemove != null)
+            {
+                contacts.Remove(contactToRemove);
+                RenumberContacts();
+                SaveContactsToBinary();
+                MessageBox.Show("Contact removed successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Contact with the specified ID was not found.");
+            }
+        }
+
+        private void RenumberContacts()
+        {
+            for (int i = 0; i < contacts.Count; i++)
+            {
+                contacts[i].indexNumber = i + 1;
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             ContactInfo updatedContact = new ContactInfo
@@ -94,12 +119,11 @@ namespace QSOLink_Logbook
                 CustomComments = richTextBox1.Text
             };
 
-            // Find the contact with the same ID as indexValue
             ContactInfo contactToUpdate = contacts.FirstOrDefault(contact => contact.indexNumber == indexValue);
 
             if (contactToUpdate != null)
             {
-                // Update the contact's properties
+                // Update contact's properties
                 contactToUpdate.CallSign = updatedContact.CallSign;
                 contactToUpdate.Country = updatedContact.Country;
                 contactToUpdate.Mode = updatedContact.Mode;
@@ -118,9 +142,17 @@ namespace QSOLink_Logbook
         }
 
 
+
+
         private void label2_Click(object sender, EventArgs e)
         {
            // MessageBox.Show(indexValue.ToString());
         }
+        private void RemoveCurrentContact_Click(object sender, EventArgs e)
+        {
+            RemoveContact(indexValue);
+            Close();
+        }
+
     }
 }
