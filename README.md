@@ -45,6 +45,10 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 - Add the REMOVE button.
 - Make the interface prettier.
 
+## Currently known bugs (bugs to be fixed)
+- To edit, you need to click on a row, you want to edit but you need to click on a text
+- If user removes an contact, the application would assign wrong index number. 
+
 
 ## [License](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE.txt)
 This project is licensed under the `Apache License 2.0`.
