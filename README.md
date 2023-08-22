@@ -42,7 +42,7 @@ If you find a bug, kindly open an issue [here](https://github.com/Lopastudio/QSO
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/Lopastudio/QSOLink-Logbook/issues/new). Please include sample queries and their corresponding results.
 
 ## To-do
-- Add the REMOVE button.
+- ✅ Add the REMOVE button.
 - Make the interface prettier.
 
 ## Currently known bugs (bugs to be fixed)
