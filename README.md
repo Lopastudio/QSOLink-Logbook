@@ -1,3 +1,11 @@
+![GitHub all releases](https://img.shields.io/github/downloads/:user/:repo/total)
+
+![GitHub](https://img.shields.io/github/license/:user/:repo)
+
+![GitHub issues](https://img.shields.io/github/issues/:user/:repo)
+
+
+
 # ![QsoLink-Logbook](https://www.lopastudio.sk/img/QSOLinkLogBook.png)
 # QsoLink Logbook
 <table>
