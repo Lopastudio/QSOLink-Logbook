@@ -17,7 +17,7 @@
 
 
 ## Demo
-When the application is going to be in Alpha 2 version, I am going to publish first official compiled version. For now, you will need to compile your own version.
+28.8.2023 - Alpha 2 release date.
 
 
 
