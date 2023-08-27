@@ -17,7 +17,7 @@
 
 
 ## Demo
-28.8.2023 - Alpha 2 release date.
+28.8.2023 - Alpha 2 release date. Installer is also going to be avaliable.
 
 
 
