@@ -1,3 +1,11 @@
+![GitHub all releases](https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total)
+
+![GitHub](https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook)
+
+![GitHub issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)
+
+
+
 # ![QsoLink-Logbook](https://www.lopastudio.sk/img/QSOLinkLogBook.png)
 # QsoLink Logbook
 <table>
