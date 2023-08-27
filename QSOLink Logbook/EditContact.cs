@@ -114,6 +114,8 @@ namespace QSOLink_Logbook
                 CallSign = CallSign_Textfield.Text,
                 Country = Country_Textfield.Text,
                 Mode = Mode_ComboBox.SelectedItem?.ToString(),
+                RSTSent = RSTSent.Text.ToString(),
+                RSTRcvd = RSTRcvd.Text.ToString(),
                 Time = dateTimePicker1.Value.ToString(),
                 IsDX = IsDX.Checked,
                 CustomComments = richTextBox1.Text
@@ -127,6 +129,8 @@ namespace QSOLink_Logbook
                 contactToUpdate.CallSign = updatedContact.CallSign;
                 contactToUpdate.Country = updatedContact.Country;
                 contactToUpdate.Mode = updatedContact.Mode;
+                contactToUpdate.RSTSent = updatedContact.RSTSent;
+                contactToUpdate.RSTRcvd = updatedContact.RSTRcvd;
                 contactToUpdate.Time = updatedContact.Time;
                 contactToUpdate.IsDX = updatedContact.IsDX;
                 contactToUpdate.CustomComments = updatedContact.CustomComments;
@@ -154,5 +158,9 @@ namespace QSOLink_Logbook
             Close();
         }
 
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

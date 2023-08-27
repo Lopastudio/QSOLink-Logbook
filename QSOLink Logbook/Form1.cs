@@ -76,6 +76,11 @@ namespace QSOLink_Logbook
         {
             RefreshContacts();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class Values
@@ -90,6 +95,8 @@ namespace QSOLink_Logbook
         public string CallSign { get; set; }
         public string Country { get; set; }
         public string Mode { get; set; }
+        public string RSTSent { get; set; }
+        public string RSTRcvd { get; set; }
         public string Time { get; set; }
         public bool IsDX { get; set; }
         public string CustomComments { get; set; }

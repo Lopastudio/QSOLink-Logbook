@@ -40,6 +40,10 @@
             this.ModeLabel = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.RSTSent = new System.Windows.Forms.TextBox();
+            this.RSTRcvd = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +59,7 @@
             // IsDX
             // 
             this.IsDX.AutoSize = true;
-            this.IsDX.Location = new System.Drawing.Point(25, 213);
+            this.IsDX.Location = new System.Drawing.Point(275, 76);
             this.IsDX.Name = "IsDX";
             this.IsDX.Size = new System.Drawing.Size(58, 17);
             this.IsDX.TabIndex = 1;
@@ -64,7 +68,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(16, 348);
+            this.button1.Location = new System.Drawing.Point(16, 219);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(200, 23);
             this.button1.TabIndex = 2;
@@ -74,14 +78,14 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(25, 187);
+            this.dateTimePicker1.Location = new System.Drawing.Point(275, 50);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 3;
             // 
             // Country_Textfield
             // 
-            this.Country_Textfield.Location = new System.Drawing.Point(85, 107);
+            this.Country_Textfield.Location = new System.Drawing.Point(85, 76);
             this.Country_Textfield.Name = "Country_Textfield";
             this.Country_Textfield.Size = new System.Drawing.Size(131, 20);
             this.Country_Textfield.TabIndex = 4;
@@ -89,7 +93,7 @@
             // CountryLabel
             // 
             this.CountryLabel.AutoSize = true;
-            this.CountryLabel.Location = new System.Drawing.Point(22, 110);
+            this.CountryLabel.Location = new System.Drawing.Point(22, 79);
             this.CountryLabel.Name = "CountryLabel";
             this.CountryLabel.Size = new System.Drawing.Size(43, 13);
             this.CountryLabel.TabIndex = 5;
@@ -98,7 +102,7 @@
             // CallSignLabel
             // 
             this.CallSignLabel.AutoSize = true;
-            this.CallSignLabel.Location = new System.Drawing.Point(22, 84);
+            this.CallSignLabel.Location = new System.Drawing.Point(22, 53);
             this.CallSignLabel.Name = "CallSignLabel";
             this.CallSignLabel.Size = new System.Drawing.Size(45, 13);
             this.CallSignLabel.TabIndex = 7;
@@ -106,10 +110,11 @@
             // 
             // CallSign_Textfield
             // 
-            this.CallSign_Textfield.Location = new System.Drawing.Point(85, 81);
+            this.CallSign_Textfield.Location = new System.Drawing.Point(85, 50);
             this.CallSign_Textfield.Name = "CallSign_Textfield";
             this.CallSign_Textfield.Size = new System.Drawing.Size(131, 20);
             this.CallSign_Textfield.TabIndex = 6;
+            this.CallSign_Textfield.TextChanged += new System.EventHandler(this.CallSign_Textfield_TextChanged);
             // 
             // Mode_ComboBox
             // 
@@ -165,7 +170,7 @@
             "QSL",
             "QTH",
             "QRPp"});
-            this.Mode_ComboBox.Location = new System.Drawing.Point(85, 134);
+            this.Mode_ComboBox.Location = new System.Drawing.Point(85, 103);
             this.Mode_ComboBox.Name = "Mode_ComboBox";
             this.Mode_ComboBox.Size = new System.Drawing.Size(131, 21);
             this.Mode_ComboBox.TabIndex = 8;
@@ -173,7 +178,7 @@
             // ModeLabel
             // 
             this.ModeLabel.AutoSize = true;
-            this.ModeLabel.Location = new System.Drawing.Point(22, 137);
+            this.ModeLabel.Location = new System.Drawing.Point(22, 106);
             this.ModeLabel.Name = "ModeLabel";
             this.ModeLabel.Size = new System.Drawing.Size(34, 13);
             this.ModeLabel.TabIndex = 9;
@@ -181,26 +186,62 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(16, 261);
+            this.richTextBox1.Location = new System.Drawing.Point(266, 118);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(305, 81);
+            this.richTextBox1.Size = new System.Drawing.Size(209, 81);
             this.richTextBox1.TabIndex = 10;
             this.richTextBox1.Text = "";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 245);
+            this.label5.Location = new System.Drawing.Point(272, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Custom comments";
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(22, 145);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 14);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "RST sent";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(22, 174);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 14);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "RST rcvd";
+            // 
+            // RSTSent
+            // 
+            this.RSTSent.Location = new System.Drawing.Point(83, 142);
+            this.RSTSent.Name = "RSTSent";
+            this.RSTSent.Size = new System.Drawing.Size(31, 20);
+            this.RSTSent.TabIndex = 13;
+            this.RSTSent.TextChanged += new System.EventHandler(this.RSTSent_TextChanged);
+            // 
+            // RSTRcvd
+            // 
+            this.RSTRcvd.Location = new System.Drawing.Point(83, 171);
+            this.RSTRcvd.Name = "RSTRcvd";
+            this.RSTRcvd.Size = new System.Drawing.Size(31, 20);
+            this.RSTRcvd.TabIndex = 14;
+            this.RSTRcvd.TextChanged += new System.EventHandler(this.RSTRcvd_TextChanged);
+            // 
             // AddContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 383);
+            this.ClientSize = new System.Drawing.Size(489, 257);
+            this.Controls.Add(this.RSTRcvd);
+            this.Controls.Add(this.RSTSent);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.ModeLabel);
@@ -215,6 +256,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddContact";
             this.Text = "Add contact";
+            this.Load += new System.EventHandler(this.AddContact_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +276,9 @@
         private System.Windows.Forms.Label ModeLabel;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox RSTSent;
+        private System.Windows.Forms.TextBox RSTRcvd;
     }
 }

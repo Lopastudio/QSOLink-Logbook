@@ -42,6 +42,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.RemoveCurrentContact = new System.Windows.Forms.Button();
+            this.RSTRcvd = new System.Windows.Forms.TextBox();
+            this.RSTSent = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +61,7 @@
             // IsDX
             // 
             this.IsDX.AutoSize = true;
-            this.IsDX.Location = new System.Drawing.Point(25, 213);
+            this.IsDX.Location = new System.Drawing.Point(245, 107);
             this.IsDX.Name = "IsDX";
             this.IsDX.Size = new System.Drawing.Size(58, 17);
             this.IsDX.TabIndex = 1;
@@ -66,7 +70,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(16, 348);
+            this.button1.Location = new System.Drawing.Point(16, 250);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 23);
             this.button1.TabIndex = 2;
@@ -76,9 +80,9 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(25, 187);
+            this.dateTimePicker1.Location = new System.Drawing.Point(245, 81);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(202, 20);
             this.dateTimePicker1.TabIndex = 3;
             // 
             // Country_Textfield
@@ -184,16 +188,17 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(16, 261);
+            this.richTextBox1.Location = new System.Drawing.Point(245, 155);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(305, 81);
+            this.richTextBox1.Size = new System.Drawing.Size(211, 81);
             this.richTextBox1.TabIndex = 10;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 245);
+            this.label5.Location = new System.Drawing.Point(242, 139);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 11;
@@ -211,7 +216,7 @@
             // 
             // RemoveCurrentContact
             // 
-            this.RemoveCurrentContact.Location = new System.Drawing.Point(172, 348);
+            this.RemoveCurrentContact.Location = new System.Drawing.Point(172, 250);
             this.RemoveCurrentContact.Name = "RemoveCurrentContact";
             this.RemoveCurrentContact.Size = new System.Drawing.Size(149, 23);
             this.RemoveCurrentContact.TabIndex = 13;
@@ -219,11 +224,45 @@
             this.RemoveCurrentContact.UseVisualStyleBackColor = true;
             this.RemoveCurrentContact.Click += new System.EventHandler(this.RemoveCurrentContact_Click);
             // 
+            // RSTRcvd
+            // 
+            this.RSTRcvd.Location = new System.Drawing.Point(85, 204);
+            this.RSTRcvd.Name = "RSTRcvd";
+            this.RSTRcvd.Size = new System.Drawing.Size(31, 20);
+            this.RSTRcvd.TabIndex = 18;
+            // 
+            // RSTSent
+            // 
+            this.RSTSent.Location = new System.Drawing.Point(85, 175);
+            this.RSTSent.Name = "RSTSent";
+            this.RSTSent.Size = new System.Drawing.Size(31, 20);
+            this.RSTSent.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(24, 207);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 14);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "RST rcvd";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(24, 178);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 14);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "RST sent";
+            // 
             // EditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 383);
+            this.ClientSize = new System.Drawing.Size(465, 279);
+            this.Controls.Add(this.RSTRcvd);
+            this.Controls.Add(this.RSTSent);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.RemoveCurrentContact);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
@@ -261,5 +300,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button RemoveCurrentContact;
+        private System.Windows.Forms.TextBox RSTRcvd;
+        private System.Windows.Forms.TextBox RSTSent;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
