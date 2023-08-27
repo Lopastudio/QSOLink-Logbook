@@ -1,8 +1,8 @@
-![GitHub all releases](https://img.shields.io/github/downloads/:user/:repo/total)
+![GitHub all releases](https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total)
 
-![GitHub](https://img.shields.io/github/license/:user/:repo)
+![GitHub](https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook)
 
-![GitHub issues](https://img.shields.io/github/issues/:user/:repo)
+![GitHub issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)
 
 
 
