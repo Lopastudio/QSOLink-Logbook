@@ -46,6 +46,10 @@
             this.RSTSent = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.RXFreq = new System.Windows.Forms.TextBox();
+            this.TXFreq = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -116,7 +120,6 @@
             this.CallSign_Textfield.Name = "CallSign_Textfield";
             this.CallSign_Textfield.Size = new System.Drawing.Size(131, 20);
             this.CallSign_Textfield.TabIndex = 6;
-            this.CallSign_Textfield.TextChanged += new System.EventHandler(this.CallSign_Textfield_TextChanged);
             // 
             // Mode_ComboBox
             // 
@@ -193,7 +196,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(211, 81);
             this.richTextBox1.TabIndex = 10;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // label5
             // 
@@ -212,7 +214,6 @@
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "Editing callsign";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // RemoveCurrentContact
             // 
@@ -254,11 +255,45 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "RST sent";
             // 
+            // RXFreq
+            // 
+            this.RXFreq.Location = new System.Drawing.Point(174, 204);
+            this.RXFreq.Name = "RXFreq";
+            this.RXFreq.Size = new System.Drawing.Size(44, 20);
+            this.RXFreq.TabIndex = 22;
+            // 
+            // TXFreq
+            // 
+            this.TXFreq.Location = new System.Drawing.Point(174, 175);
+            this.TXFreq.Name = "TXFreq";
+            this.TXFreq.Size = new System.Drawing.Size(44, 20);
+            this.TXFreq.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(122, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 14);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "RX Freq";
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(122, 178);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 14);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "TX Freq";
+            // 
             // EditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 279);
+            this.Controls.Add(this.RXFreq);
+            this.Controls.Add(this.TXFreq);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.RSTRcvd);
             this.Controls.Add(this.RSTSent);
             this.Controls.Add(this.label3);
@@ -304,5 +339,9 @@
         private System.Windows.Forms.TextBox RSTSent;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox RXFreq;
+        private System.Windows.Forms.TextBox TXFreq;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

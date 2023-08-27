@@ -77,11 +77,6 @@ namespace QSOLink_Logbook
             }
         }
 
-        private void CallSign_Textfield_TextChanged(object sender, EventArgs e)
-        {
-            //nothing
-        }
-
         private void RemoveContact(int indexValue)
         {
             ContactInfo contactToRemove = contacts.FirstOrDefault(contact => contact.indexNumber == indexValue);
@@ -116,6 +111,8 @@ namespace QSOLink_Logbook
                 Mode = Mode_ComboBox.SelectedItem?.ToString(),
                 RSTSent = RSTSent.Text.ToString(),
                 RSTRcvd = RSTRcvd.Text.ToString(),
+                TXFreq = TXFreq.Text.ToString(),
+                RXFreq = RXFreq.Text.ToString(),
                 Time = dateTimePicker1.Value.ToString(),
                 IsDX = IsDX.Checked,
                 CustomComments = richTextBox1.Text
@@ -131,6 +128,8 @@ namespace QSOLink_Logbook
                 contactToUpdate.Mode = updatedContact.Mode;
                 contactToUpdate.RSTSent = updatedContact.RSTSent;
                 contactToUpdate.RSTRcvd = updatedContact.RSTRcvd;
+                contactToUpdate.TXFreq = updatedContact.TXFreq;
+                contactToUpdate.RXFreq = updatedContact.RXFreq;
                 contactToUpdate.Time = updatedContact.Time;
                 contactToUpdate.IsDX = updatedContact.IsDX;
                 contactToUpdate.CustomComments = updatedContact.CustomComments;
@@ -145,22 +144,13 @@ namespace QSOLink_Logbook
             }
         }
 
-
-
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-           // MessageBox.Show(indexValue.ToString());
-        }
         private void RemoveCurrentContact_Click(object sender, EventArgs e)
         {
-            RemoveContact(indexValue);
-            Close();
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            if (MessageBox.Show("Are you sure you want to delete this contact?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                RemoveContact(indexValue);
+                Close();
+            }
         }
     }
 }

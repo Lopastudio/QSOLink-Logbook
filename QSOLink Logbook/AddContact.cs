@@ -20,7 +20,6 @@ namespace QSOLink_Logbook
             this.contacts = contacts;
         }
 
-        // AddContact form
         private void button1_Click(object sender, EventArgs e)
         {
             int newIndex = contacts.Count + 1; // Get the new index directly
@@ -33,6 +32,8 @@ namespace QSOLink_Logbook
                 Mode = Mode_ComboBox.SelectedItem?.ToString(),
                 RSTSent = RSTSent.Text.ToString(),
                 RSTRcvd = RSTRcvd.Text.ToString(),
+                TXFreq = TXFreq.Text.ToString(),
+                RXFreq = RXFreq.Text.ToString(),
                 Time = dateTimePicker1.Value.ToString(),
                 IsDX = IsDX.Checked,
                 CustomComments = richTextBox1.Text
@@ -55,26 +56,6 @@ namespace QSOLink_Logbook
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, contacts);
             }
-        }
-
-        private void AddContact_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CallSign_Textfield_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RSTSent_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RSTRcvd_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

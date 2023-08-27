@@ -9,13 +9,14 @@ namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "Alpha1.1";
+        public string Version = "Alpha2";
 
         private AddContact AddContactForm = new AddContact();
         private List<ContactInfo> contacts = new List<ContactInfo>();
 
         public QSOLinkLogBookWindow()
         {
+            MessageBox.Show("This is an Alpha release. If you have any problems, please open an issue on my github (https://github.com/Lopastudio/QSOLink-Logbook/issues/new)");
             InitializeComponent();
             label1.Text = Version;
             RefreshContacts();
@@ -67,19 +68,9 @@ namespace QSOLink_Logbook
             RefreshContacts(); // Refresh the data after the EditContact form closes
         }
 
-        private void Title_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hmm. What a cool easteregg.");
-        }
-
         private void EditButton_TEMP_Click(object sender, EventArgs e)
         {
             RefreshContacts();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 
@@ -97,6 +88,8 @@ namespace QSOLink_Logbook
         public string Mode { get; set; }
         public string RSTSent { get; set; }
         public string RSTRcvd { get; set; }
+        public string TXFreq { get; set; }
+        public string RXFreq { get; set; }
         public string Time { get; set; }
         public bool IsDX { get; set; }
         public string CustomComments { get; set; }
