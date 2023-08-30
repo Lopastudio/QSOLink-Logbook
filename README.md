@@ -65,3 +65,8 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 ## [License](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE.txt)
 This project is licensed under the `Apache License 2.0`.
 
+## DONATING
+If you like my projects, please consider donating.
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=JQM3976LAZR4U)
+
