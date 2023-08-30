@@ -1,8 +1,7 @@
-![GitHub all releases](https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total)
+[![Total downloads](https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total)](https://github.com/Lopastudio/QSOLink-Logbook/releases)
+[![License](https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE)
+[![Open issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/issues)
 
-![GitHub](https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook)
-
-![GitHub issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)
 
 
 
@@ -18,7 +17,7 @@
 
 
 ## Demo
-When the application is going to be in Alpha 2 version, I am going to publish first official compiled version. For now, you will need to compile your own version.
+28.8.2023 - Alpha 2 release date. Installer is also going to be avaliable.
 
 
 
