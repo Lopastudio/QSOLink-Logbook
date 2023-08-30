@@ -44,6 +44,8 @@ namespace QSOLink_Logbook
             SaveContactsToBinary();
 
             MessageBox.Show("Contact saved successfully!");
+
+            Close();
         }
 
 

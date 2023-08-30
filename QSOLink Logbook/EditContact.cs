@@ -9,7 +9,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using YamlDotNet.Core.Tokens;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QSOLink_Logbook
@@ -55,6 +54,10 @@ namespace QSOLink_Logbook
                     CallSign_Textfield.Text = contactToDisplay.CallSign;
                     Country_Textfield.Text = contactToDisplay.Country;
                     Mode_ComboBox.Text = contactToDisplay.Mode;
+                    RSTSent.Text = contactToDisplay.RSTSent;
+                    RSTRcvd.Text = contactToDisplay.RSTRcvd;
+                    TXFreq.Text = contactToDisplay.TXFreq;
+                    RXFreq.Text = contactToDisplay.RXFreq;
                     IsDX.Checked = contactToDisplay.IsDX;
                     richTextBox1.Text = contactToDisplay.CustomComments;
                     label2.Text = "Editing Contact: " + contactToDisplay.CallSign.ToString();
@@ -142,6 +145,7 @@ namespace QSOLink_Logbook
             {
                 MessageBox.Show("Contact with the specified ID was not found.");
             }
+            Close();
         }
 
         private void RemoveCurrentContact_Click(object sender, EventArgs e)
