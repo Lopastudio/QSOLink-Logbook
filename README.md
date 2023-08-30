@@ -49,16 +49,17 @@ If you find a bug, kindly open an issue [here](https://github.com/Lopastudio/QSO
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/Lopastudio/QSOLink-Logbook/issues/new). Please include sample queries and their corresponding results.
 
 ## To-do
-- Add the REMOVE button.
+- ✅ Add the REMOVE button.
 - Make the interface prettier.
-- Add pdf or rtf export option.
+- ✅ Add pdf or rtf export option. (I made an html version of this)
 - Clean up the code, Make it prettier and more efficient.
-- Make an installer.
+- ✅ Make an installer.
 - Fix bugs!!!
 
 ## Currently known bugs (bugs to be fixed)
-- To edit, you need to click on a row, you want to edit but you need to click on a text
-- ✅ If user removes an contact, the application would assign wrong index number. 
+- To edit, you need to click on a row, you want to edit but you need to click on a text.
+- Alpha 2.1, App needs to be launched as administrator when using the installer.
+- ✅ If user removes an contact, the application would assign wrong index number.
 
 
 ## [License](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE.txt)
