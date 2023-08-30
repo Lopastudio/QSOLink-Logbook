@@ -1,19 +1,16 @@
-﻿
+﻿using QSOLink_Logbook.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Windows.Forms;
-using iText.Kernel.Exceptions;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
 
 namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "Alpha2";
+        public string Version = "Alpha2.1";
 
         private AddContact AddContactForm = new AddContact();
         private Settings SettingsForm = new Settings();
@@ -76,41 +73,74 @@ namespace QSOLink_Logbook
             LoadSettings();
         }
 
-        private void ExportToPdf(string pdfFilePath)
+        private void ExportToHtml(string htmlFilePath)
         {
             try
             {
-                using (var pdfWriter = new PdfWriter(pdfFilePath))
-                using (var pdfDocument = new PdfDocument(pdfWriter))
-                using (var document = new Document(pdfDocument))
+                AppSettings settings = SettingsManager.LoadSettings();
+                using (StreamWriter writer = new StreamWriter(htmlFilePath, false, Encoding.UTF8))
                 {
-                    document.Add(new Paragraph("Contact Information Export"));
+                    writer.WriteLine("<html>");
+                    writer.WriteLine("<head>");
+                    writer.WriteLine("<title>QSOLink-Logbook Contacts</title>");
+                    // Include Bootstrap CSS link
+                    writer.WriteLine("<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>");
+                    writer.WriteLine("</head>");
+                    writer.WriteLine("<body>");
+                    writer.WriteLine("<div class='container'>");
+                    writer.WriteLine("<h1 class='mt-4'>Contact logbook of: " + settings.Callsign + "</h1>");
+                    writer.WriteLine("<table class='table table-bordered mt-4'>");
 
-                    Table table = new Table(dataGridView1.Columns.Count);
-                    table.UseAllAvailableWidth();
-
-                    // Add column headers
+                    // Export headers
+                    writer.WriteLine("<thead class='thead-dark'>");
+                    writer.WriteLine("<tr>");
                     foreach (DataGridViewColumn column in dataGridView1.Columns)
                     {
-                        table.AddCell(new Cell().Add(new Paragraph(column.HeaderText)));
-                    }
-
-                    // Add data rows
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        foreach (DataGridViewCell cell in row.Cells)
+                        // Exclude "indexNumber" column
+                        if (column.Name != "indexNumber")
                         {
-                            table.AddCell(new Cell().Add(new Paragraph(cell.Value?.ToString())));
+                            writer.WriteLine("<th>" + column.HeaderText + "</th>");
                         }
                     }
+                    writer.WriteLine("</tr>");
+                    writer.WriteLine("</thead>");
 
-                    document.Add(table);
+                    // Export data
+                    writer.WriteLine("<tbody>");
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        writer.WriteLine("<tr>");
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            // Exclude "indexNumber" column
+                            if (dataGridView1.Columns[cell.ColumnIndex].Name != "indexNumber")
+                            {
+                                writer.WriteLine("<td>" + cell.Value + "</td>");
+                            }
+                        }
+                        writer.WriteLine("</tr>");
+                    }
+                    writer.WriteLine("</tbody>");
+
+                    writer.WriteLine("</table>");
+                    writer.WriteLine("</div>");
+
+                    // Include Bootstrap JS and jQuery scripts
+                    writer.WriteLine("<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>");
+                    writer.WriteLine("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js'></script>");
+                    writer.WriteLine("<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>");
+
+                    writer.WriteLine("</body>");
+                    writer.WriteLine("</html>");
                 }
-                MessageBox.Show("Data exported to PDF successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Data exported to HTML successfully.", "Export Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (PdfException ex)
+
+
+            catch (Exception ex)
             {
-                MessageBox.Show($"PDF Exception: {ex.Message}", "PDF Generation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -138,11 +168,12 @@ namespace QSOLink_Logbook
         private void button2_Click(object sender, EventArgs e) // Export button
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
+            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
+
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string pdfFilePath = saveFileDialog.FileName;
-                ExportToPdf(pdfFilePath);
+                string htmlFilePath = saveFileDialog.FileName;
+                ExportToHtml(htmlFilePath);
             }
         }
 
