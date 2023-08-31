@@ -86,7 +86,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Alpha2.1";
+            this.label1.Text = "Alpha2.2";
             // 
             // EditButton_TEMP
             // 
