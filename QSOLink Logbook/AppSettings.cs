@@ -7,5 +7,6 @@ namespace QSOLink_Logbook
     {
         public string Callsign { get; set; }
         public bool DisplayCallSign { get; set; }
+        // public bool AlphaWarn { get; set; }
     }
 }

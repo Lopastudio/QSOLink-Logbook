@@ -18,7 +18,6 @@ namespace QSOLink_Logbook
 
         public QSOLinkLogBookWindow()
         {
-            MessageBox.Show("This is an Alpha release. If you have any problems, please open an issue on my github (https://s.lopastudio.sk/issue)");
             InitializeComponent();
             label1.Text = Version;
             RefreshContacts();
@@ -31,7 +30,15 @@ namespace QSOLink_Logbook
             // All the settings that need to be applied go here
             CallsignLabel.Text = settings.Callsign;
             CallsignLabel.Visible = settings.DisplayCallSign;
+
+            /*
+            if (!settings.AlphaWarn)
+            {
+                MessageBox.Show("This is an Alpha release. If you have any problems, please open an issue on my GitHub (https://s.lopastudio.sk/issue)");
+            }
+            */
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {

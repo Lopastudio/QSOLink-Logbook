@@ -26,6 +26,7 @@ namespace QSOLink_Logbook
 
                         Callsign.Text = loadedSettings.Callsign;
                         DisplayCallSign.Checked = loadedSettings.DisplayCallSign;
+                        // AlphaWarn.Checked = loadedSettings.AlphaWarn;
                     }
                 }
             }
