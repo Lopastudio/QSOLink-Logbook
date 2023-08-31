@@ -1,70 +1,66 @@
+# QsoLink Logbook
+
 [![Total downloads](https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total)](https://github.com/Lopastudio/QSOLink-Logbook/releases)
 [![License](https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE)
 [![Open issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/issues)
 
+![QsoLink Logbook Image](https://lopastudio.sk/img/QSOLinkLogBook.png)
 
-![QsoLink-Logbook-Image]((https://lopastudio.sk/img/QSOLinkLogBook.png "QSOLink-Logbook")
-# QsoLink Logbook
-<table>
-<tr>
-<td>
-  A QSOLink Logbook is a simple digital QSO logging software. It is focused on Ease of Use.
-</td>
-</tr>
-</table>
+## About
 
+QsoLink Logbook is a user-friendly digital QSO logging software designed for ease of use.
 
-## Demo
-28.8.2023 - Alpha 2 release date. Installer is also going to be avaliable.
+## Download
 
+You can download the official releases with installers from the [Releases section](https://github.com/Lopastudio/QSOLink-Logbook/releases) or by clicking the button below:
 
+[![Download Here](https://github.com/Lopastudio/QSOLink-Logbook/releases)](https://github.com/Lopastudio/QSOLink-Logbook/releases)
 
-## Compiling 
+## Developer Section
 
-1. Download the project files `git clone https://github.com/Lopastudio/QSOLink-Logbook/`
-2. Next, you will need to download Visual Studio 2022 and install dotNET Desktop Development package.
-3. After you opened up the project in Visual Studio, switch the configuration from Debug to Release. This is a dropdown, located on the top left of your screen.
-4. Next, press `CTRL + B` or go to the `Build` tab on the top and click the `Build QSOLink Logbook` button. 
-5. And finally, after building the project, Visual Studio should return an path to the compiled build. It should be located in the project folder. In there go to the `Bin` and the into `Release` folders, and there is your application.
-6. And thats all.
+### Compiling
 
-### Development
-Want to contribute? Great!
+1. Clone the project: `git clone https://github.com/Lopastudio/QSOLink-Logbook/`
+2. Download and install Visual Studio 2022 with the dotNET Desktop Development package.
+3. Open the project in Visual Studio, switch to the Release configuration.
+4. Build the project using `CTRL + B` or by clicking "Build QSOLink Logbook" in the Build tab.
+5. The compiled build will be in the `Bin/Release` folder of the project.
 
-To fix a bug or enhance an existing module, follow these steps:
+### Contribution
 
-- Fork the repo
-- Make the appropriate changes in the files
-- Add changes to reflect the changes made.
-- Commit your changes
-- Push to the branch
-- Create a Pull Request 
+If you'd like to contribute, follow these steps:
+1. Fork the repo
+2. Make your changes
+3. Commit and push to your branch
+4. Create a Pull Request
 
 ### Bug / Feature Request
 
-If you find a bug, kindly open an issue [here](https://github.com/Lopastudio/QSOLink-Logbook/issues/new) by including your search query and the expected result.
+If you find a bug or want to request a new feature, please open an issue [here](https://github.com/Lopastudio/QSOLink-Logbook/issues/new).
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/Lopastudio/QSOLink-Logbook/issues/new). Please include sample queries and their corresponding results.
+## To-Do List
 
-## To-do
-- ✅ Add the REMOVE button.
-- Make the interface prettier.
-- ✅ Add pdf or rtf export option. (I made an html version of this)
-- Clean up the code, Make it prettier and more efficient.
-- ✅ Make an installer.
-- Fix bugs!!!
+| Task                                           | Status |
+| ---------------------------------------------- | ------ |
+| Add the REMOVE button.                         | ✅     |
+| Improve the user interface.                    | ❌     |
+| Add PDF or RTF export option.                  | ✅     |
+| Clean up and optimize the code.                | ❌     |
+| Create an installer.                           | ✅     |
+| Fix known bugs.                                | ❌     |
 
-## Currently known bugs (bugs to be fixed)
-- To edit, you need to click on a row, you want to edit but you need to click on a text.
-- Alpha 2.1, App needs to be launched as administrator when using the installer.
-- ✅ If user removes an contact, the application would assign wrong index number.
+## Known Bugs
 
+| Bug Description                                | Status |
+| ---------------------------------------------- | ------ |
+| To edit, click on the row's text, not the row itself. |❌      |
+| Alpha 2.1: The app needs to be launched as an administrator when using the installer. | ❌   |
+| Removing a contact assigns the wrong index number. | ✅     |
 
-## [License](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE.txt)
-This project is licensed under the `Apache License 2.0`.
+## License
 
-## DONATING
-If you like my projects, please consider donating.
+This project is licensed under the [Apache License 2.0](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE.txt).
 
-[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=JQM3976LAZR4U)
+## Support
 
+If you appreciate my work, please consider [donating](https://www.paypal.com/donate/?hosted_button_id=JQM3976LAZR4U).
