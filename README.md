@@ -3,9 +3,7 @@
 [![Open issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/issues)
 
 
-
-
-# ![QsoLink-Logbook-Image](https://www.lopastudio.sk/img/QSOLinkLogBook.png)
+![QsoLink-Logbook-Image]((https://lopastudio.sk/img/QSOLinkLogBook.png "QSOLink-Logbook")
 # QsoLink Logbook
 <table>
 <tr>
