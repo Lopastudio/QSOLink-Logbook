@@ -5,7 +5,7 @@
 
 
 
-# ![QsoLink-Logbook](https://www.lopastudio.sk/img/QSOLinkLogBook.png)
+# ![QsoLink-Logbook-Image](https://www.lopastudio.sk/img/QSOLinkLogBook.png)
 # QsoLink Logbook
 <table>
 <tr>
