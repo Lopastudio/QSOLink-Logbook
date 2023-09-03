@@ -8,6 +8,9 @@
    <img src="https://img.shields.io/github/forks/Lopastudio/QSOLink-Logbook">
    <br>
    <img src="https://img.shields.io/github/last-commit/Lopastudio/QSOLink-Logbook">
+   <br>
+   <img src="https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total">
+   <br>
    <img src="https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook">
    <br>
    <img src="https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook">
