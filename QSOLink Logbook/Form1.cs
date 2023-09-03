@@ -15,7 +15,7 @@ namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "Alpha2.2";
+        public string Version = "v3.0-Alpha";
 
         private AddContact AddContactForm = new AddContact();
         private Settings SettingsForm = new Settings();

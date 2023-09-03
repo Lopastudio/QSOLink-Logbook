@@ -1,12 +1,24 @@
 # ![QsoLink Logbook Icon](QSOLink_Icon_Full_New.ico) QsoLink Logbook
 
-[![Total downloads](https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total)](https://github.com/Lopastudio/QSOLink-Logbook/releases)
-[![License](https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE)
-[![Open issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/issues)
-
 ![QsoLink Logbook Image](screenshot.png)
 
-# Application will request an admin privileges, because of the way, it writes data to its own program files folder. This is an temporary bug!
+<p align= "center">
+   <img src="https://img.shields.io/github/languages/top/Lopastudio/QSOLink-Logbook">
+   <img src="https://img.shields.io/github/stars/Lopastudio/QSOLink-Logbook">
+   <img src="https://img.shields.io/github/forks/Lopastudio/QSOLink-Logbook">
+   <br>
+   <img src="https://img.shields.io/github/last-commit/Lopastudio/QSOLink-Logbook">
+   <img src="https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook">
+   <br>
+   <img src="https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook">
+   <img src="https://img.shields.io/github/issues-closed/Lopastudio/QSOLink-Logbook">
+   <br>
+   <br>
+   <img src="https://repobeats.axiom.co/api/embed/4f816b049bbc42e53f44225e7d4c72c6345d5b0c.svg">
+</p>
+
+
+## Application will request an admin privileges, because of the way, it writes data to its own program files folder. This is an temporary bug!
 
 ## About
 
