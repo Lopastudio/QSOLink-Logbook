@@ -1,6 +1,7 @@
 ﻿using QSOLink_Logbook.Properties;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -75,6 +76,12 @@ namespace QSOLink_Logbook
                 {
                     cell.ReadOnly = true;
                 }
+            }
+
+            // Hide the "indexNumber" column
+            if (dataGridView1.Columns.Contains("indexNumber"))
+            {
+                dataGridView1.Columns["indexNumber"].Visible = false;
             }
 
             LoadSettings();
@@ -184,6 +191,19 @@ namespace QSOLink_Logbook
             }
         }
 
+        WebBrowser myWebBrowser = new WebBrowser();
+        private void button3_Click(object sender, EventArgs e) // Print button
+        {
+            string tempHtmlFilePath = Path.Combine(Path.GetTempPath(), "tempPrint.html");
+            ExportToHtml(tempHtmlFilePath);
+
+            myWebBrowser.DocumentCompleted += myWebBrowser_DocumentCompleted;
+            myWebBrowser.DocumentText = System.IO.File.ReadAllText(tempHtmlFilePath);
+        }
+        private void myWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            myWebBrowser.Print();
+        }
     }
 
     public class Values
