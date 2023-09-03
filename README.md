@@ -25,8 +25,9 @@
 QsoLink Logbook is a user-friendly digital QSO logging software designed for ease of use.
 
 ## Download
+Firstly, install dotNet framework: https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48
 
-You can download the official releases with installers from the [Releases section](https://github.com/Lopastudio/QSOLink-Logbook/releases) or by clicking the button below:
+And now you can just download the official releases with installers from the [Releases section](https://github.com/Lopastudio/QSOLink-Logbook/releases) or by clicking the button below:
 
 [![Download Here](https://github.com/Lopastudio/QSOLink-Logbook/releases)](https://github.com/Lopastudio/QSOLink-Logbook/releases)
 
