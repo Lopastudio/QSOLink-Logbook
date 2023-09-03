@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditContact));
             this.label1 = new System.Windows.Forms.Label();
             this.IsDX = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -312,8 +313,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.IsDX);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditContact";
             this.Text = "Edit contact";
+            this.Load += new System.EventHandler(this.EditContact_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

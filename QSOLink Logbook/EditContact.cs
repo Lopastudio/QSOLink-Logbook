@@ -156,5 +156,10 @@ namespace QSOLink_Logbook
                 Close();
             }
         }
+
+        private void EditContact_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

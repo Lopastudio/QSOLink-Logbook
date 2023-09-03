@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.DisplayCallSign = new System.Windows.Forms.CheckBox();
             this.Title = new System.Windows.Forms.Label();
             this.Callsign = new System.Windows.Forms.TextBox();
@@ -102,6 +103,7 @@
             this.Controls.Add(this.Callsign);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.DisplayCallSign);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
             this.Text = "Settings";
             this.ResumeLayout(false);

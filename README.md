@@ -1,10 +1,10 @@
-# QsoLink Logbook
+# ![QsoLink Logbook Icon](QSOLink_Icon_Full_New.ico) QsoLink Logbook
 
 [![Total downloads](https://img.shields.io/github/downloads/Lopastudio/QSOLink-Logbook/total)](https://github.com/Lopastudio/QSOLink-Logbook/releases)
 [![License](https://img.shields.io/github/license/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/blob/master/LICENSE)
 [![Open issues](https://img.shields.io/github/issues/Lopastudio/QSOLink-Logbook)](https://github.com/Lopastudio/QSOLink-Logbook/issues)
 
-![QsoLink Logbook Image](https://lopastudio.sk/img/QSOLinkLogBook.png)
+![QsoLink Logbook Image](screenshot.png)
 
 ## About
 

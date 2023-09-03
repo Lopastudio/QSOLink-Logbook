@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logbook-icon-isolated-white-background-your-web-mobile-app-design-133862285-1430264140.ico</ApplicationIcon>
+    <ApplicationIcon>QSOLink_Icon_Full_New.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logbook-icon-isolated-white-background-your-web-mobile-app-design-133862285-1430264140.ico" />
+    <Content Include="QSOLink_Icon_Full_New.ico" />
     <None Include="Resources\Settings_Small.png" />
   </ItemGroup>
   <ItemGroup>

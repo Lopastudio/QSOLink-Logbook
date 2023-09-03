@@ -127,5 +127,10 @@ namespace QSOLink_Logbook
             string country = await FetchCountryFromQRZ(callSign);
             Country_Textfield.Text = country;
         }
+
+        private void AddContact_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
