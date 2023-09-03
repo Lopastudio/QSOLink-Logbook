@@ -7,6 +7,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 
+using Octokit;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
@@ -25,6 +29,8 @@ namespace QSOLink_Logbook
             LoadSettings();
         }
 
+        
+
         private void LoadSettings()
         {
             AppSettings settings = SettingsManager.LoadSettings();
@@ -41,10 +47,51 @@ namespace QSOLink_Logbook
         }
 
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             RefreshContacts();
             LoadSettings();
+
+
+            // Updating logic
+
+            var latestRelease = await CheckForUpdatesAsync();
+            if (latestRelease != null)
+            {
+                var dialogResult = MessageBox.Show(
+                    $"A new version ({latestRelease.TagName}) is available. Do you want to update?",
+                    "Update Available",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information
+                );
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(latestRelease.HtmlUrl);
+                }
+            }
+        }
+
+        private async Task<Release> CheckForUpdatesAsync()
+        {
+            var github = new GitHubClient(new ProductHeaderValue("QSOLink-Logbook"));
+            var releases = await github.Repository.Release.GetAll("Lopastudio", "QSOLink-Logbook");
+            var latestRelease = releases.FirstOrDefault(); // Assumes releases are sorted in descending order (latest first).
+
+            if (latestRelease != null && !IsCurrentVersion(latestRelease.TagName))
+            {
+                return latestRelease;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private bool IsCurrentVersion(string latestVersion)
+        {
+            var currentVersion = "v3.0-Alpha";
+            return string.Equals(currentVersion, latestVersion, StringComparison.OrdinalIgnoreCase);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -60,7 +107,7 @@ namespace QSOLink_Logbook
 
             if (File.Exists(filePath))
             {
-                using (FileStream stream = new FileStream(filePath, FileMode.Open))
+                using (FileStream stream = new FileStream(filePath, System.IO.FileMode.Open))
                 {
                     BinaryFormatter formatter = new BinaryFormatter();
                     contacts = (List<ContactInfo>)formatter.Deserialize(stream);

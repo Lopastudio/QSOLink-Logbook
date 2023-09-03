@@ -87,9 +87,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(967, 553);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Alpha2.2";
+            this.label1.Text = "Alpha 3.0";
             // 
             // EditButton_TEMP
             // 

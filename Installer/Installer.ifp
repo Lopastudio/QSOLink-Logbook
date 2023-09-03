@@ -3,7 +3,7 @@
 ProjectFileVersion = 1.1
 [General]
 Program name = QSOLink-Logbook
-Program version = Alpha2.1
+Program version = Alpha 3.0
 Windows XP = 0
 Windows Server 2003 = 0
 Windows Vista = 0
@@ -57,7 +57,7 @@ Time = 2
 PlaySound = 0
 Allow = 0
 [Build]
-File = 
+File = B:\code\VS_Repos\QSOLink Logbook\Installer\INSTALL.exe
 SetupIconPath = ..\icons\ancient.ico
 UninstallIconPath = ..\icons\ancient.ico
 CompressionMethod = 0
@@ -125,15 +125,24 @@ dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Newtonsoft.Json.xml
 693.6 KB
 xml
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Octokit.dll
+1.2 MB
+dll
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Octokit.xml
+2.3 MB
+xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.exe
-300 KB
+58.5 KB
 exe
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.exe.config
-565 Byte
+559 Byte
 config
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.pdb
-77.5 KB
+85.5 KB
 pdb
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\settings.bin
+210 Byte
+bin
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Buffers.dll
 20.4 KB
 dll
@@ -366,6 +375,12 @@ Desktop
 QSOLink Logbook
 <InstallPath>\QSOLink Logbook.exe
 runas /user:Administrator "<InstallPath>\QSOLink Logbook.exe"
+
+0
+Startmenu
+QSOLink Logbook
+<InstallPath>\QSOLink Logbook.exe
+
 
 0
 [IFP_End]
