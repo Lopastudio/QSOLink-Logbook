@@ -90,7 +90,7 @@ namespace QSOLink_Logbook
 
         private bool IsCurrentVersion(string latestVersion)
         {
-            var currentVersion = "v3.0-Alpha";
+            var currentVersion = "v3.1-Alpha";
             return string.Equals(currentVersion, latestVersion, StringComparison.OrdinalIgnoreCase);
         }
 
