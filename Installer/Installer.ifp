@@ -3,7 +3,7 @@
 ProjectFileVersion = 1.1
 [General]
 Program name = QSOLink-Logbook
-Program version = Alpha 3.0
+Program version = Alpha 3.1
 Windows XP = 0
 Windows Server 2003 = 0
 Windows Vista = 0
@@ -132,13 +132,13 @@ B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Octokit.xml
 2.3 MB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.exe
-58.5 KB
+65.5 KB
 exe
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.exe.config
 559 Byte
 config
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.pdb
-85.5 KB
+91.5 KB
 pdb
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\settings.bin
 210 Byte
@@ -374,7 +374,7 @@ xml
 Desktop
 QSOLink Logbook
 <InstallPath>\QSOLink Logbook.exe
-runas /user:Administrator "<InstallPath>\QSOLink Logbook.exe"
+
 
 0
 Startmenu

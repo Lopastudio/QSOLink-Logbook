@@ -37,8 +37,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CallsignLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(531, 548);
+            this.button1.Location = new System.Drawing.Point(550, 548);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 23);
             this.button1.TabIndex = 3;
@@ -90,10 +92,11 @@
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Alpha 3.0";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // EditButton_TEMP
             // 
-            this.EditButton_TEMP.Location = new System.Drawing.Point(428, 548);
+            this.EditButton_TEMP.Location = new System.Drawing.Point(447, 548);
             this.EditButton_TEMP.Name = "EditButton_TEMP";
             this.EditButton_TEMP.Size = new System.Drawing.Size(97, 23);
             this.EditButton_TEMP.TabIndex = 7;
@@ -133,34 +136,54 @@
             this.CallsignLabel.TabIndex = 10;
             this.CallsignLabel.Text = "NoCall";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(638, 548);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Export";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(385, 548);
+            this.button3.Location = new System.Drawing.Point(344, 548);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(37, 23);
+            this.button3.Size = new System.Drawing.Size(97, 23);
             this.button3.TabIndex = 12;
             this.button3.Text = "Print";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(241, 548);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(97, 23);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Make HTML";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(657, 548);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(101, 23);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "Import ADIF";
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(764, 548);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Export ADIF";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // QSOLinkLogBookWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 580);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.CallsignLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
@@ -189,8 +212,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label CallsignLabel;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button2;
     }
 }
 

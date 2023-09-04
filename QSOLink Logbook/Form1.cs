@@ -15,7 +15,7 @@ namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "v3.0-Alpha";
+        public string Version = "v3.1-Alpha";
 
         private AddContact AddContactForm = new AddContact();
         private Settings SettingsForm = new Settings();
@@ -226,17 +226,6 @@ namespace QSOLink_Logbook
             RefreshContacts();
         }
 
-        private void button2_Click(object sender, EventArgs e) // Export button
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string htmlFilePath = saveFileDialog.FileName;
-                ExportToHtml(htmlFilePath);
-            }
-        }
 
         WebBrowser myWebBrowser = new WebBrowser();
         private void button3_Click(object sender, EventArgs e) // Print button
@@ -250,6 +239,229 @@ namespace QSOLink_Logbook
         private void myWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             myWebBrowser.Print();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string htmlFilePath = saveFileDialog.FileName;
+                ExportToHtml(htmlFilePath);
+            }
+        }
+
+        private void SaveContactsToBinary()
+        {
+            string filePath = "Contacts.dat";
+
+            using (FileStream stream = new FileStream(filePath, System.IO.FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, contacts);
+            }
+        }
+
+        private void RenumberContacts()
+        {
+            for (int i = 0; i < contacts.Count; i++)
+            {
+                contacts[i].indexNumber = i + 1;
+            }
+        }
+
+        private void ImportADIF_Click()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "ADIF Files|*.adi";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string adifFilePath = openFileDialog.FileName;
+
+                List<ContactInfo> importedContacts = ParseADIFFile(adifFilePath);
+                if (importedContacts != null && importedContacts.Count > 0)
+                {
+                    contacts.AddRange(importedContacts);
+                    RenumberContacts();
+                    SaveContactsToBinary();
+                    RefreshContacts();
+                }
+            }
+        }
+
+        private void ExportADIF_Click()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "ADIF Files|*.adi";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string adifFilePath = saveFileDialog.FileName;
+
+                string adifContent = GenerateADIFContent(contacts);
+
+                try
+                {
+                    File.WriteAllText(adifFilePath, adifContent);
+                    MessageBox.Show("Contacts exported successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error exporting contacts: " + ex.Message);
+                }
+            }
+        }
+
+        private string GenerateADIFContent(List<ContactInfo> contacts)
+        {
+            StringBuilder adifContent = new StringBuilder();
+
+            foreach (var contact in contacts)
+            {
+                adifContent.AppendLine($"<CALL:{contact.CallSign.Length}>{contact.CallSign}");
+                adifContent.AppendLine($"<COUNTRY:{contact.Country.Length}>{contact.Country}");
+                adifContent.AppendLine($"<MODE:{contact.Mode.Length}>{contact.Mode}");
+                adifContent.AppendLine($"<RST_SENT:{contact.RSTSent.Length}>{contact.RSTSent}");
+                adifContent.AppendLine($"<RST_RCVD:{contact.RSTRcvd.Length}>{contact.RSTRcvd}");
+                adifContent.AppendLine($"<TX_FREQ:{contact.TXFreq.Length}>{contact.TXFreq}");
+                adifContent.AppendLine($"<RX_FREQ:{contact.RXFreq.Length}>{contact.RXFreq}");
+                adifContent.AppendLine($"<TIME_ON:{contact.Time.Length}>{contact.Time}");
+                adifContent.AppendLine($"<DXCC:{(contact.IsDX ? "1" : "0")}>");
+                adifContent.AppendLine($"<COMMENT:{contact.CustomComments.Length}>{contact.CustomComments}");
+                adifContent.AppendLine("<EOR>"); // End of record marker
+            }
+
+            return adifContent.ToString();
+        }
+
+        private List<ContactInfo> ParseADIFFile(string adifFilePath)
+        {
+            List<ContactInfo> importedContacts = new List<ContactInfo>();
+
+            try
+            {
+                string[] adifLines = File.ReadAllLines(adifFilePath);
+
+                ContactInfo currentContact = null;
+                foreach (string line in adifLines)
+                {
+                    if (line.StartsWith("<CALL:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            importedContacts.Add(currentContact);
+                        }
+                        currentContact = new ContactInfo();
+                        currentContact.CallSign = ExtractValueFromADIFLine(line);
+                    }
+                    else if (line.StartsWith("<COUNTRY:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.Country = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<MODE:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.Mode = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<RST_SENT:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.RSTSent = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<RST_RCVD:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.RSTRcvd = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<TX_FREQ:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.TXFreq = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<RX_FREQ:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.RXFreq = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<TIME_ON:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.Time = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<DXCC:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.IsDX = ExtractValueFromADIFLine(line).Equals("1", StringComparison.OrdinalIgnoreCase);
+                        }
+                    }
+                    else if (line.StartsWith("<COMMENT:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.CustomComments = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                }
+
+                if (currentContact != null)
+                {
+                    importedContacts.Add(currentContact);
+                }
+
+                MessageBox.Show("Contacts imported successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error importing contacts: " + ex.Message);
+                importedContacts.Clear();
+            }
+
+            return importedContacts;
+        }
+
+        private string ExtractValueFromADIFLine(string line)
+        {
+            int startIndex = line.IndexOf('>') + 1;
+            if (startIndex < line.Length)
+            {
+                return line.Substring(startIndex).Trim();
+            }
+            return string.Empty;
+        }
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ImportADIF_Click();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ExportADIF_Click();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
