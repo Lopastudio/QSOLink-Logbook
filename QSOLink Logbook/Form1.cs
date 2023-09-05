@@ -15,7 +15,7 @@ namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "v3.1-Alpha";
+        public string Version = "v3.1-Alpha-Patch1";
 
         private AddContact AddContactForm = new AddContact();
         private Settings SettingsForm = new Settings();
@@ -90,7 +90,7 @@ namespace QSOLink_Logbook
 
         private bool IsCurrentVersion(string latestVersion)
         {
-            var currentVersion = "v3.1-Alpha";
+            var currentVersion = "v3.1-Alpha-Patch1";
             return string.Equals(currentVersion, latestVersion, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -150,6 +150,7 @@ namespace QSOLink_Logbook
                     writer.WriteLine("<body>");
                     writer.WriteLine("<div class='container'>");
                     writer.WriteLine("<h1 class='mt-4'>Contact logbook of: " + settings.Callsign + "</h1>");
+                    writer.WriteLine("<h1 class='mt-4'>Rig: " + settings.Rig + "</h1>");
                     writer.WriteLine("<table class='table table-bordered mt-4'>");
 
                     // Export headers
@@ -328,6 +329,7 @@ namespace QSOLink_Logbook
                 adifContent.AppendLine($"<RST_RCVD:{contact.RSTRcvd.Length}>{contact.RSTRcvd}");
                 adifContent.AppendLine($"<TX_FREQ:{contact.TXFreq.Length}>{contact.TXFreq}");
                 adifContent.AppendLine($"<RX_FREQ:{contact.RXFreq.Length}>{contact.RXFreq}");
+                adifContent.AppendLine($"<POWER:{contact.Power.Length}>{contact.Power}");
                 adifContent.AppendLine($"<TIME_ON:{contact.Time.Length}>{contact.Time}");
                 adifContent.AppendLine($"<DXCC:{(contact.IsDX ? "1" : "0")}>");
                 adifContent.AppendLine($"<COMMENT:{contact.CustomComments.Length}>{contact.CustomComments}");
@@ -397,6 +399,13 @@ namespace QSOLink_Logbook
                         if (currentContact != null)
                         {
                             currentContact.RXFreq = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    else if (line.StartsWith("<POWER:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.Power = ExtractValueFromADIFLine(line);
                         }
                     }
                     else if (line.StartsWith("<TIME_ON:"))
@@ -482,6 +491,7 @@ namespace QSOLink_Logbook
         public string TXFreq { get; set; }
         public string RXFreq { get; set; }
         public string Time { get; set; }
+        public string Power { get; set; }
         public bool IsDX { get; set; }
         public string CustomComments { get; set; }
     }

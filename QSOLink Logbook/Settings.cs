@@ -44,7 +44,8 @@ namespace QSOLink_Logbook
                 AppSettings settings = new AppSettings
                 {
                     Callsign = Callsign.Text,
-                    DisplayCallSign = DisplayCallSign.Checked
+                    DisplayCallSign = DisplayCallSign.Checked,
+                    Rig = Rig.Text,
                 };
 
                 using (FileStream fs = new FileStream("settings.bin", FileMode.Create))

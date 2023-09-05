@@ -51,6 +51,8 @@
             this.TXFreq = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.PowerTextbox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -92,7 +94,7 @@
             // 
             // Country_Textfield
             // 
-            this.Country_Textfield.Location = new System.Drawing.Point(85, 107);
+            this.Country_Textfield.Location = new System.Drawing.Point(87, 84);
             this.Country_Textfield.Name = "Country_Textfield";
             this.Country_Textfield.Size = new System.Drawing.Size(131, 20);
             this.Country_Textfield.TabIndex = 4;
@@ -100,7 +102,7 @@
             // CountryLabel
             // 
             this.CountryLabel.AutoSize = true;
-            this.CountryLabel.Location = new System.Drawing.Point(22, 110);
+            this.CountryLabel.Location = new System.Drawing.Point(24, 87);
             this.CountryLabel.Name = "CountryLabel";
             this.CountryLabel.Size = new System.Drawing.Size(43, 13);
             this.CountryLabel.TabIndex = 5;
@@ -109,7 +111,7 @@
             // CallSignLabel
             // 
             this.CallSignLabel.AutoSize = true;
-            this.CallSignLabel.Location = new System.Drawing.Point(22, 84);
+            this.CallSignLabel.Location = new System.Drawing.Point(24, 61);
             this.CallSignLabel.Name = "CallSignLabel";
             this.CallSignLabel.Size = new System.Drawing.Size(45, 13);
             this.CallSignLabel.TabIndex = 7;
@@ -117,7 +119,7 @@
             // 
             // CallSign_Textfield
             // 
-            this.CallSign_Textfield.Location = new System.Drawing.Point(85, 81);
+            this.CallSign_Textfield.Location = new System.Drawing.Point(87, 58);
             this.CallSign_Textfield.Name = "CallSign_Textfield";
             this.CallSign_Textfield.Size = new System.Drawing.Size(131, 20);
             this.CallSign_Textfield.TabIndex = 6;
@@ -176,7 +178,7 @@
             "QSL",
             "QTH",
             "QRPp"});
-            this.Mode_ComboBox.Location = new System.Drawing.Point(85, 134);
+            this.Mode_ComboBox.Location = new System.Drawing.Point(87, 111);
             this.Mode_ComboBox.Name = "Mode_ComboBox";
             this.Mode_ComboBox.Size = new System.Drawing.Size(131, 21);
             this.Mode_ComboBox.TabIndex = 8;
@@ -184,7 +186,7 @@
             // ModeLabel
             // 
             this.ModeLabel.AutoSize = true;
-            this.ModeLabel.Location = new System.Drawing.Point(22, 137);
+            this.ModeLabel.Location = new System.Drawing.Point(24, 114);
             this.ModeLabel.Name = "ModeLabel";
             this.ModeLabel.Size = new System.Drawing.Size(34, 13);
             this.ModeLabel.TabIndex = 9;
@@ -228,21 +230,21 @@
             // 
             // RSTRcvd
             // 
-            this.RSTRcvd.Location = new System.Drawing.Point(85, 204);
+            this.RSTRcvd.Location = new System.Drawing.Point(85, 207);
             this.RSTRcvd.Name = "RSTRcvd";
             this.RSTRcvd.Size = new System.Drawing.Size(31, 20);
             this.RSTRcvd.TabIndex = 18;
             // 
             // RSTSent
             // 
-            this.RSTSent.Location = new System.Drawing.Point(85, 175);
+            this.RSTSent.Location = new System.Drawing.Point(85, 178);
             this.RSTSent.Name = "RSTSent";
             this.RSTSent.Size = new System.Drawing.Size(31, 20);
             this.RSTSent.TabIndex = 17;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(24, 207);
+            this.label3.Location = new System.Drawing.Point(24, 210);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 14);
             this.label3.TabIndex = 16;
@@ -250,7 +252,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(24, 178);
+            this.label4.Location = new System.Drawing.Point(24, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 14);
             this.label4.TabIndex = 15;
@@ -258,21 +260,21 @@
             // 
             // RXFreq
             // 
-            this.RXFreq.Location = new System.Drawing.Point(174, 204);
+            this.RXFreq.Location = new System.Drawing.Point(174, 207);
             this.RXFreq.Name = "RXFreq";
             this.RXFreq.Size = new System.Drawing.Size(44, 20);
             this.RXFreq.TabIndex = 22;
             // 
             // TXFreq
             // 
-            this.TXFreq.Location = new System.Drawing.Point(174, 175);
+            this.TXFreq.Location = new System.Drawing.Point(174, 178);
             this.TXFreq.Name = "TXFreq";
             this.TXFreq.Size = new System.Drawing.Size(44, 20);
             this.TXFreq.TabIndex = 21;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(122, 207);
+            this.label6.Location = new System.Drawing.Point(122, 210);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 14);
             this.label6.TabIndex = 20;
@@ -280,17 +282,34 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(122, 178);
+            this.label7.Location = new System.Drawing.Point(122, 181);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 14);
             this.label7.TabIndex = 19;
             this.label7.Text = "TX Freq";
+            // 
+            // PowerTextbox
+            // 
+            this.PowerTextbox.Location = new System.Drawing.Point(85, 139);
+            this.PowerTextbox.Name = "PowerTextbox";
+            this.PowerTextbox.Size = new System.Drawing.Size(31, 20);
+            this.PowerTextbox.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(24, 142);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 14);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Power (W)";
             // 
             // EditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 279);
+            this.Controls.Add(this.PowerTextbox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.RXFreq);
             this.Controls.Add(this.TXFreq);
             this.Controls.Add(this.label6);
@@ -346,5 +365,7 @@
         private System.Windows.Forms.TextBox TXFreq;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox PowerTextbox;
+        private System.Windows.Forms.Label label8;
     }
 }

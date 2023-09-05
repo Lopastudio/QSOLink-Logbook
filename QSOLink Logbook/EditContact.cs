@@ -116,6 +116,7 @@ namespace QSOLink_Logbook
                 RSTRcvd = RSTRcvd.Text.ToString(),
                 TXFreq = TXFreq.Text.ToString(),
                 RXFreq = RXFreq.Text.ToString(),
+                Power = PowerTextbox.Text.ToString(),
                 Time = dateTimePicker1.Value.ToString(),
                 IsDX = IsDX.Checked,
                 CustomComments = richTextBox1.Text

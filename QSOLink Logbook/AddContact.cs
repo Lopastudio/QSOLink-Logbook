@@ -39,6 +39,7 @@ namespace QSOLink_Logbook
                 TXFreq = TXFreq.Text.ToString(),
                 RXFreq = RXFreq.Text.ToString(),
                 Time = dateTimePicker1.Value.ToString(),
+                Power = PowerTextbox.Text.ToString(),
                 IsDX = IsDX.Checked,
                 CustomComments = richTextBox1.Text
             };
