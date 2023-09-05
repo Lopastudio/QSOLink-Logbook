@@ -23,6 +23,8 @@
 
 ## Application will request an admin privileges, because of the way, it writes data to its own program files folder. This is an temporary bug!
 
+### New update every week :)
+
 ## About
 
 QsoLink Logbook is a user-friendly digital QSO logging software designed for ease of use.
