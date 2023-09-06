@@ -162,5 +162,10 @@ namespace QSOLink_Logbook
         {
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e) // Help button
+        {
+            System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
+        }
     }
 }

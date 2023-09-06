@@ -6,16 +6,17 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
-
 using Octokit;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using SelectPdf;
 
 namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "v3.1-Alpha-Patch1";
+        public string Version = "v3.2-Alpha"; // CHANGE THIS WHEN A NEW VERSION COMES OUT!!!
 
         private AddContact AddContactForm = new AddContact();
         private Settings SettingsForm = new Settings();
@@ -27,14 +28,18 @@ namespace QSOLink_Logbook
             label1.Text = Version;
             RefreshContacts();
             LoadSettings();
-        }
+            this.KeyDown += Form1_KeyDown;
 
-        
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
 
         private void LoadSettings()
         {
             AppSettings settings = SettingsManager.LoadSettings();
-            // All the settings that need to be applied go here
             CallsignLabel.Text = settings.Callsign;
             CallsignLabel.Visible = settings.DisplayCallSign;
 
@@ -46,6 +51,44 @@ namespace QSOLink_Logbook
             */
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                button4.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                // button3.PerformClick(); Print button - Disabled
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                Refresh.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F4)
+            {
+                button1.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                button5.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F6)
+            {
+                button2.PerformClick();
+            }
+
+        }
+
+        private void dataGridView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            // Block all keyboard input except for arrow keys (for scrolling)
+            if (e.KeyCode != Keys.Up && e.KeyCode != Keys.Down &&
+                e.KeyCode != Keys.Left && e.KeyCode != Keys.Right)
+            {
+                e.IsInputKey = true;
+            }
+        }
 
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -72,11 +115,14 @@ namespace QSOLink_Logbook
             }
         }
 
+        
+
+
         private async Task<Release> CheckForUpdatesAsync()
         {
             var github = new GitHubClient(new ProductHeaderValue("QSOLink-Logbook"));
             var releases = await github.Repository.Release.GetAll("Lopastudio", "QSOLink-Logbook");
-            var latestRelease = releases.FirstOrDefault(); // Assumes releases are sorted in descending order (latest first).
+            var latestRelease = releases.FirstOrDefault(); // Assumes releases are sorted in descending order (latest first). Please do not critisize it. It is my first time making an actual working updater. Thanks :)
 
             if (latestRelease != null && !IsCurrentVersion(latestRelease.TagName))
             {
@@ -90,7 +136,7 @@ namespace QSOLink_Logbook
 
         private bool IsCurrentVersion(string latestVersion)
         {
-            var currentVersion = "v3.1-Alpha-Patch1";
+            var currentVersion = Version;
             return string.Equals(currentVersion, latestVersion, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -144,7 +190,6 @@ namespace QSOLink_Logbook
                     writer.WriteLine("<html>");
                     writer.WriteLine("<head>");
                     writer.WriteLine("<title>QSOLink-Logbook Contacts</title>");
-                    // Include Bootstrap CSS link
                     writer.WriteLine("<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>");
                     writer.WriteLine("</head>");
                     writer.WriteLine("<body>");
@@ -152,8 +197,6 @@ namespace QSOLink_Logbook
                     writer.WriteLine("<h1 class='mt-4'>Contact logbook of: " + settings.Callsign + "</h1>");
                     writer.WriteLine("<h1 class='mt-4'>Rig: " + settings.Rig + "</h1>");
                     writer.WriteLine("<table class='table table-bordered mt-4'>");
-
-                    // Export headers
                     writer.WriteLine("<thead class='thead-dark'>");
                     writer.WriteLine("<tr>");
                     foreach (DataGridViewColumn column in dataGridView1.Columns)
@@ -174,7 +217,6 @@ namespace QSOLink_Logbook
                         writer.WriteLine("<tr>");
                         foreach (DataGridViewCell cell in row.Cells)
                         {
-                            // Exclude "indexNumber" column
                             if (dataGridView1.Columns[cell.ColumnIndex].Name != "indexNumber")
                             {
                                 writer.WriteLine("<td>" + cell.Value + "</td>");
@@ -187,7 +229,6 @@ namespace QSOLink_Logbook
                     writer.WriteLine("</table>");
                     writer.WriteLine("</div>");
 
-                    // Include Bootstrap JS and jQuery scripts
                     writer.WriteLine("<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>");
                     writer.WriteLine("<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js'></script>");
                     writer.WriteLine("<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>");
@@ -227,20 +268,44 @@ namespace QSOLink_Logbook
             RefreshContacts();
         }
 
-
-        WebBrowser myWebBrowser = new WebBrowser();
         private void button3_Click(object sender, EventArgs e) // Print button
         {
             string tempHtmlFilePath = Path.Combine(Path.GetTempPath(), "tempPrint.html");
             ExportToHtml(tempHtmlFilePath);
 
-            myWebBrowser.DocumentCompleted += myWebBrowser_DocumentCompleted;
-            myWebBrowser.DocumentText = System.IO.File.ReadAllText(tempHtmlFilePath);
+            if (File.Exists(tempHtmlFilePath))
+            {
+                string pdfFilePath = Path.Combine(Path.GetTempPath(), "tempPrint.pdf");
+                HtmlToPdf converter = new HtmlToPdf();
+                PdfDocument pdfDocument = converter.ConvertHtmlString(File.ReadAllText(tempHtmlFilePath));
+                pdfDocument.Save(pdfFilePath);
+                pdfDocument.Close();
+                PrintPDF(pdfFilePath);
+            }
+            else
+            {
+                MessageBox.Show("The HTML file does not exist.");
+            }
         }
-        private void myWebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+
+        private void PrintPDF(string pdfFilePath)
         {
-            myWebBrowser.Print();
+            if (File.Exists(pdfFilePath))
+            {
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = pdfFilePath,
+                    Verb = "print",
+                };
+                Process.Start(psi);
+            }
+            else
+            {
+                MessageBox.Show("The PDF file does not exist.");
+            }
         }
+
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -301,9 +366,7 @@ namespace QSOLink_Logbook
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string adifFilePath = saveFileDialog.FileName;
-
                 string adifContent = GenerateADIFContent(contacts);
-
                 try
                 {
                     File.WriteAllText(adifFilePath, adifContent);
@@ -320,24 +383,31 @@ namespace QSOLink_Logbook
         {
             StringBuilder adifContent = new StringBuilder();
 
-            foreach (var contact in contacts)
+            if (contacts != null)
             {
-                adifContent.AppendLine($"<CALL:{contact.CallSign.Length}>{contact.CallSign}");
-                adifContent.AppendLine($"<COUNTRY:{contact.Country.Length}>{contact.Country}");
-                adifContent.AppendLine($"<MODE:{contact.Mode.Length}>{contact.Mode}");
-                adifContent.AppendLine($"<RST_SENT:{contact.RSTSent.Length}>{contact.RSTSent}");
-                adifContent.AppendLine($"<RST_RCVD:{contact.RSTRcvd.Length}>{contact.RSTRcvd}");
-                adifContent.AppendLine($"<TX_FREQ:{contact.TXFreq.Length}>{contact.TXFreq}");
-                adifContent.AppendLine($"<RX_FREQ:{contact.RXFreq.Length}>{contact.RXFreq}");
-                adifContent.AppendLine($"<POWER:{contact.Power.Length}>{contact.Power}");
-                adifContent.AppendLine($"<TIME_ON:{contact.Time.Length}>{contact.Time}");
-                adifContent.AppendLine($"<DXCC:{(contact.IsDX ? "1" : "0")}>");
-                adifContent.AppendLine($"<COMMENT:{contact.CustomComments.Length}>{contact.CustomComments}");
-                adifContent.AppendLine("<EOR>"); // End of record marker
+                foreach (var contact in contacts)
+                {
+                    if (contact != null) // Check if contact is not null
+                    {
+                        adifContent.AppendLine($"<CALL:{contact.CallSign?.Length}>{contact.CallSign}");
+                        adifContent.AppendLine($"<COUNTRY:{contact.Country?.Length}>{contact.Country}");
+                        adifContent.AppendLine($"<MODE:{contact.Mode?.Length}>{contact.Mode}");
+                        adifContent.AppendLine($"<RST_SENT:{contact.RSTSent?.Length}>{contact.RSTSent}");
+                        adifContent.AppendLine($"<RST_RCVD:{contact.RSTRcvd?.Length}>{contact.RSTRcvd}");
+                        adifContent.AppendLine($"<TX_FREQ:{contact.TXFreq?.Length}>{contact.TXFreq}");
+                        adifContent.AppendLine($"<RX_FREQ:{contact.RXFreq?.Length}>{contact.RXFreq}");
+                        adifContent.AppendLine($"<POWER:{contact.Power?.Length}>{contact.Power}");
+                        adifContent.AppendLine($"<TIME_ON:{contact.Time?.Length}>{contact.Time}");
+                        adifContent.AppendLine($"<DXCC:{(contact.IsDX ? "1" : "0")}>");
+                        adifContent.AppendLine($"<COMMENT:{contact.CustomComments?.Length}>{contact.CustomComments}");
+                        adifContent.AppendLine("<EOR>"); // End of record marker
+                    }
+                }
             }
 
             return adifContent.ToString();
         }
+
 
         private List<ContactInfo> ParseADIFFile(string adifFilePath)
         {
@@ -471,6 +541,16 @@ namespace QSOLink_Logbook
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CallsignLabel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Wow, what a cool easteregg :)");
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e) // Help Button
+        {
+            System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
         }
     }
 

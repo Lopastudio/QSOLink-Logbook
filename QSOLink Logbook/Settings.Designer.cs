@@ -99,9 +99,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(111, 135);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.Size = new System.Drawing.Size(102, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Your Rig";
+            this.label3.Text = "Your Rig information";
             // 
             // Rig
             // 

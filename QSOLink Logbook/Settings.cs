@@ -27,6 +27,7 @@ namespace QSOLink_Logbook
 
                         Callsign.Text = loadedSettings.Callsign;
                         DisplayCallSign.Checked = loadedSettings.DisplayCallSign;
+                        Rig.Text = loadedSettings.Rig;
                         // AlphaWarn.Checked = loadedSettings.AlphaWarn;
                     }
                 }
@@ -55,6 +56,8 @@ namespace QSOLink_Logbook
                 }
 
                 MessageBox.Show("Settings applied successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Close();
             }
             catch (Exception ex)
             {
