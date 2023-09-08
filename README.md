@@ -44,19 +44,19 @@ If you find a bug or want to request a new feature, please open an issue [here](
 
 | Task                                           | Status |
 | ---------------------------------------------- | ------ |
+| Make the printing function work.               | ❌     |
+| Finish the Wiki page.                          | ❌     |
 | Add the REMOVE button.                         | ✅     |
-| Improve the user interface.                    | ❌     |
+| Improve the user interface.                    | ✅     |
 | Add PDF or RTF export option.                  | ✅     |
-| Clean up and optimize the code.                | ❌     |
+| Clean up and optimize the code.                | ✅     |
 | Create an installer.                           | ✅     |
-| Fix known bugs.                                | ❌     |
+| Fix known bugs.                                | ✅     |
 
 ## Known Bugs
 
 | Bug Description                                | Status |
 | ---------------------------------------------- | ------ |
-| To edit, click on the row's text, not the row itself. |❌      |
-| Alpha 2.1: The app needs to be launched as an administrator when using the installer. | ❌   |
 | Removing a contact assigns the wrong index number. | ✅     |
 
 
