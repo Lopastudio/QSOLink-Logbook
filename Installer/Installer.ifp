@@ -28,7 +28,7 @@ Show Label = 1
 VisualStylesEnabled = 1
 [Files]
 Installation path = <ProgramFiles>\<AppName>\
-Autcip = 0
+Autcip = 1
 [Uninstall]
 Vwau = 0
 Website = https://
@@ -44,7 +44,7 @@ Reboot computer = 0
 Program = <InstallPath>\QSOLink Logbook.exe
 ProgramArguments = 
 [Shortcuts]
-Allowtc = 1
+Allowtc = 0
 Shortcut path = <AppName>\
 [Serialoptions]
 Allows = 0
