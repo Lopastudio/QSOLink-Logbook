@@ -46,7 +46,7 @@ namespace QSOLink_Logbook
 
             contacts.Add(contact);
 
-            SaveContactsToBinary();
+            SaveContactsToBinary(false);
 
             MessageBox.Show("Contact saved successfully!");
 
@@ -111,9 +111,23 @@ namespace QSOLink_Logbook
             }
         }
 
-        private void SaveContactsToBinary()
+        private void SaveContactsToBinary(bool SaveFileDialogShow)
         {
-            string filePath = "Contacts.dat";
+            string filePath = "";
+            if (SaveFileDialogShow == true) {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "QSOLink Data Files|*.DAT";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string SaveFilePath = saveFileDialog.FileName;
+                    filePath = SaveFilePath;
+                }
+            }
+            else
+            {
+                filePath = "Contacts.dat";
+            }
 
             using (FileStream stream = new FileStream(filePath, FileMode.Create))
             {

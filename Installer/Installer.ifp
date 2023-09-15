@@ -3,7 +3,7 @@
 ProjectFileVersion = 1.1
 [General]
 Program name = QSOLink-Logbook
-Program version = v3.1-Alpha-Patch1
+Program version = v3.3-Alpha
 Windows XP = 0
 Windows Server 2003 = 0
 Windows Vista = 0
@@ -17,7 +17,7 @@ Windows Server 2022 = 1
 Windows 11 = 1
 DoNotCheckOS = 0
 Company name = Lopastudio
-Website = https://lopastudio.sk
+Website = https://lopastudio.sk/logbook
 SFA = 1
 DFA = 1
 Comp = 1
@@ -28,7 +28,7 @@ Show Label = 1
 VisualStylesEnabled = 1
 [Files]
 Installation path = <ProgramFiles>\<AppName>\
-Autcip = 1
+Autcip = 0
 [Uninstall]
 Vwau = 0
 Website = https://
@@ -58,8 +58,8 @@ PlaySound = 0
 Allow = 0
 [Build]
 File = B:\code\VS_Repos\QSOLink Logbook\Installer\INSTALL.exe
-SetupIconPath = ..\icons\ancient.ico
-UninstallIconPath = ..\icons\ancient.ico
+SetupIconPath = B:\code\VS_Repos\QSOLink Logbook\QSOLink_Icon_Full_New.ico
+UninstallIconPath = B:\code\VS_Repos\QSOLink Logbook\QSOLink_Icon_Full_New.ico
 CompressionMethod = 0
 CompressionLevel = 2
 [Updater]
@@ -77,53 +77,68 @@ Execdlls = 0
 [Languages]
 2
 [Files/Dirs]
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\BouncyCastle.Crypto.dll
+2.5 MB
+dll
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.AspNetCore.WebUtilities.dll
+64.9 KB
+dll
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.AspNetCore.WebUtilities.xml
+30.1 KB
+xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
-20.4 KB
+26.1 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
-17.8 KB
+29.1 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-43.4 KB
+47.1 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.xml
-73.2 KB
+114.2 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.DependencyInjection.dll
-74.4 KB
+86.1 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.DependencyInjection.xml
-12.2 KB
+37.9 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll
-51.4 KB
+64.6 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Logging.Abstractions.xml
-50.5 KB
+66.1 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Logging.dll
-41.9 KB
+48.6 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Logging.xml
-26.4 KB
+47.8 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Options.dll
-53.9 KB
+62.6 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Options.xml
-89.1 KB
+127.3 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Primitives.dll
-41.4 KB
+46.1 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Extensions.Primitives.xml
-69.7 KB
+81 KB
+xml
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Net.Http.Headers.dll
+73.4 KB
+dll
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Microsoft.Net.Http.Headers.xml
+29.2 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Newtonsoft.Json.dll
-685.5 KB
+695.3 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Newtonsoft.Json.xml
-693.6 KB
+696.8 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Octokit.dll
 1.2 MB
@@ -132,16 +147,25 @@ B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Octokit.xml
 2.3 MB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.exe
-66 KB
+3.2 MB
 exe
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.exe.config
-559 Byte
+3.3 KB
 config
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\QSOLink Logbook.pdb
-95.5 KB
+103.5 KB
 pdb
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Select.Html.dep
+51.9 MB
+dep
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Select.HtmlToPdf.dll
+2.7 MB
+dll
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\Select.HtmlToPdf.xml
+284.9 KB
+xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\settings.bin
-210 Byte
+247 Byte
 bin
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Buffers.dll
 20.4 KB
@@ -150,13 +174,13 @@ B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Buffers.xml
 3.4 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Diagnostics.DiagnosticSource.dll
-95.9 KB
+169.2 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Diagnostics.DiagnosticSource.xml
-73.3 KB
+140.3 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Memory.dll
-137.9 KB
+138.9 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Memory.xml
 13.6 KB
@@ -167,11 +191,23 @@ dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Numerics.Vectors.xml
 179.2 KB
 xml
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Reflection.TypeExtensions.dll
+21.1 KB
+dll
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Reflection.TypeExtensions.xml
+10.4 KB
+xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
-16.4 KB
+17.6 KB
 dll
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-17.6 KB
+20 KB
+xml
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Text.Encodings.Web.dll
+77.1 KB
+dll
+B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Text.Encodings.Web.xml
+61.7 KB
 xml
 B:\code\VS_Repos\QSOLink Logbook\QSOLink Logbook\bin\Release\System.Threading.Tasks.Extensions.dll
 25.4 KB

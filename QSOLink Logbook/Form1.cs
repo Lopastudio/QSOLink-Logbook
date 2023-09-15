@@ -16,7 +16,7 @@ namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "v3.2-Alpha"; // CHANGE THIS WHEN A NEW VERSION COMES OUT!!!
+        public string Version = "v3.3-Alpha"; // CHANGE THIS WHEN A NEW VERSION COMES OUT!!!
 
         private AddContact AddContactForm = new AddContact();
         private Settings SettingsForm = new Settings();
@@ -26,7 +26,7 @@ namespace QSOLink_Logbook
         {
             InitializeComponent();
             label1.Text = Version;
-            RefreshContacts();
+            RefreshContacts(false);
             LoadSettings();
             this.KeyDown += Form1_KeyDown;
 
@@ -92,7 +92,7 @@ namespace QSOLink_Logbook
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            RefreshContacts();
+            RefreshContacts(false);
             LoadSettings();
 
 
@@ -144,12 +144,27 @@ namespace QSOLink_Logbook
         {
             AddContactForm = new AddContact(contacts);
             AddContactForm.ShowDialog();
-            RefreshContacts();
+            RefreshContacts(false);
         }
 
-        private void RefreshContacts()
+        private void RefreshContacts(bool SaveFileDialogShow)
         {
-            string filePath = "Contacts.dat";
+            string filePath = "";
+            if (SaveFileDialogShow == true)
+            {
+                FileDialog FileDialog = new OpenFileDialog();
+                FileDialog.Filter = "QSOLink Data Files|*.DAT";
+
+                if (FileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string SaveFilePath = FileDialog.FileName;
+                    filePath = SaveFilePath;
+                }
+            }
+            else
+            {
+                filePath = "Contacts.dat";
+            }
 
             if (File.Exists(filePath))
             {
@@ -253,19 +268,17 @@ namespace QSOLink_Logbook
 
             EditContact editContactForm = new EditContact(rowIndex);
             editContactForm.ShowDialog(); // Use ShowDialog to wait for the form to close
-            RefreshContacts(); // Refresh the data after the EditContact form closes
+            RefreshContacts(false); // Refresh the data after the EditContact form closes
         }
 
         private void EditButton_TEMP_Click(object sender, EventArgs e)
         {
-            RefreshContacts();
+            RefreshContacts(false);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            SettingsForm = new Settings();
-            SettingsForm.ShowDialog();
-            RefreshContacts();
+            // Not in use anymore
         }
 
         private void button3_Click(object sender, EventArgs e) // Print button
@@ -353,7 +366,7 @@ namespace QSOLink_Logbook
                     contacts.AddRange(importedContacts);
                     RenumberContacts();
                     SaveContactsToBinary();
-                    RefreshContacts();
+                    RefreshContacts(false);
                 }
             }
         }
@@ -550,7 +563,76 @@ namespace QSOLink_Logbook
 
         private void pictureBox3_Click(object sender, EventArgs e) // Help Button
         {
+            // No longer in use
+        }
+
+        private void SaveContactsToBinary(bool SaveFileDialogShow)
+        {
+            string filePath = "";
+            if (SaveFileDialogShow == true)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "QSOLink Data Files|*.DAT";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string SaveFilePath = saveFileDialog.FileName;
+                    filePath = SaveFilePath;
+                }
+            }
+            else
+            {
+                filePath = "Contacts.dat";
+            }
+
+            using (FileStream stream = new FileStream(filePath, System.IO.FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, contacts);
+            }
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm = new Settings();
+            SettingsForm.ShowDialog();
+            RefreshContacts(false);
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void saveADIFAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportADIF_Click();
+        }
+
+        private void importADIFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportADIF_Click();
+        }
+
+        private void aboutQSOLinkLogbookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("QSOLink Version: " + Version, "About");
+        }
+
+        private void saveAsDATToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveContactsToBinary(true);
+        }
+
+        private void loadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            RefreshContacts(true);
+            SaveContactsToBinary(false);
         }
     }
 
