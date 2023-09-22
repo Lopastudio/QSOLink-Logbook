@@ -22,5 +22,53 @@ namespace QSOLink_Logbook.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int MacroButton1 {
+            get {
+                return ((int)(this["MacroButton1"]));
+            }
+            set {
+                this["MacroButton1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int MacroButton2 {
+            get {
+                return ((int)(this["MacroButton2"]));
+            }
+            set {
+                this["MacroButton2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int MacroButton3 {
+            get {
+                return ((int)(this["MacroButton3"]));
+            }
+            set {
+                this["MacroButton3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int MacroButton4 {
+            get {
+                return ((int)(this["MacroButton4"]));
+            }
+            set {
+                this["MacroButton4"] = value;
+            }
+        }
     }
 }

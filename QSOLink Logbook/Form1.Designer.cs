@@ -28,32 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.PictureBox pictureBox1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QSOLinkLogBookWindow));
             this.Title = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.macro4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.Refresh = new System.Windows.Forms.Button();
+            this.macro3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.CallsignLabel = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.macro2 = new System.Windows.Forms.Button();
+            this.macro1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsDATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveADIFAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.importADIFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,33 +60,24 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutQSOLinkLogbookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = global::QSOLink_Logbook.Properties.Resources.Settings_Small;
-            resources.ApplyResources(pictureBox1, "pictureBox1");
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Title
             // 
             resources.ApplyResources(this.Title, "Title");
             this.Title.Name = "Title";
             // 
-            // button1
+            // macro4
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.macro4, "macro4");
+            this.macro4.Name = "macro4";
+            this.macro4.UseVisualStyleBackColor = true;
+            this.macro4.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -118,12 +104,12 @@
             this.label1.Name = "label1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Refresh
+            // macro3
             // 
-            resources.ApplyResources(this.Refresh, "Refresh");
-            this.Refresh.Name = "Refresh";
-            this.Refresh.UseVisualStyleBackColor = true;
-            this.Refresh.Click += new System.EventHandler(this.EditButton_TEMP_Click);
+            resources.ApplyResources(this.macro3, "macro3");
+            this.macro3.Name = "macro3";
+            this.macro3.UseVisualStyleBackColor = true;
+            this.macro3.Click += new System.EventHandler(this.EditButton_TEMP_Click);
             // 
             // label2
             // 
@@ -136,31 +122,19 @@
             this.CallsignLabel.Name = "CallsignLabel";
             this.CallsignLabel.Click += new System.EventHandler(this.CallsignLabel_Click);
             // 
-            // button3
+            // macro2
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.macro2, "macro2");
+            this.macro2.Name = "macro2";
+            this.macro2.UseVisualStyleBackColor = true;
+            this.macro2.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // macro1
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            resources.ApplyResources(this.macro1, "macro1");
+            this.macro1.Name = "macro1";
+            this.macro1.UseVisualStyleBackColor = true;
+            this.macro1.Click += new System.EventHandler(this.button4_Click);
             // 
             // pictureBox2
             // 
@@ -183,30 +157,14 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
             // 
-            // pictureBox3
-            // 
-            resources.ApplyResources(this.pictureBox3, "pictureBox3");
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
@@ -228,7 +186,8 @@
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveAsDATToolStripMenuItem,
-            this.saveADIFAsToolStripMenuItem});
+            this.saveADIFAsToolStripMenuItem,
+            this.exportToHTMLToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
             // 
@@ -243,6 +202,12 @@
             this.saveADIFAsToolStripMenuItem.Name = "saveADIFAsToolStripMenuItem";
             resources.ApplyResources(this.saveADIFAsToolStripMenuItem, "saveADIFAsToolStripMenuItem");
             this.saveADIFAsToolStripMenuItem.Click += new System.EventHandler(this.saveADIFAsToolStripMenuItem_Click);
+            // 
+            // exportToHTMLToolStripMenuItem
+            // 
+            this.exportToHTMLToolStripMenuItem.Name = "exportToHTMLToolStripMenuItem";
+            resources.ApplyResources(this.exportToHTMLToolStripMenuItem, "exportToHTMLToolStripMenuItem");
+            this.exportToHTMLToolStripMenuItem.Click += new System.EventHandler(this.exportToHTMLToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
@@ -314,28 +279,29 @@
             resources.ApplyResources(this.aboutQSOLinkLogbookToolStripMenuItem, "aboutQSOLinkLogbookToolStripMenuItem");
             this.aboutQSOLinkLogbookToolStripMenuItem.Click += new System.EventHandler(this.aboutQSOLinkLogbookToolStripMenuItem_Click);
             // 
+            // pictureBox4
+            // 
+            resources.ApplyResources(this.pictureBox4, "pictureBox4");
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.TabStop = false;
+            // 
             // QSOLinkLogBookWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.macro1);
+            this.Controls.Add(this.macro2);
             this.Controls.Add(this.CallsignLabel);
-            this.Controls.Add(pictureBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Refresh);
+            this.Controls.Add(this.macro3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.macro4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.menuStrip1);
@@ -343,12 +309,11 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "QSOLinkLogBookWindow";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,24 +321,19 @@
 
         #endregion
         private System.Windows.Forms.Label Title;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button macro4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Refresh;
+        private System.Windows.Forms.Button macro3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label CallsignLabel;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button macro2;
+        private System.Windows.Forms.Button macro1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -390,6 +350,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToHTMLToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
 

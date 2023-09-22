@@ -11,12 +11,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using SelectPdf;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "v3.3-Alpha"; // CHANGE THIS WHEN A NEW VERSION COMES OUT!!!
+        public string Version = "v3.4-Alpha"; // CHANGE THIS WHEN A NEW VERSION COMES OUT!!!
 
         private AddContact AddContactForm = new AddContact();
         private Settings SettingsForm = new Settings();
@@ -28,7 +29,9 @@ namespace QSOLink_Logbook
             label1.Text = Version;
             RefreshContacts(false);
             LoadSettings();
+            MacroButtonsSetup();
             this.KeyDown += Form1_KeyDown;
+
 
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
@@ -42,6 +45,7 @@ namespace QSOLink_Logbook
             AppSettings settings = SettingsManager.LoadSettings();
             CallsignLabel.Text = settings.Callsign;
             CallsignLabel.Visible = settings.DisplayCallSign;
+            MacroButtonsSetup();
 
             /*
             if (!settings.AlphaWarn)
@@ -55,7 +59,7 @@ namespace QSOLink_Logbook
         {
             if (e.KeyCode == Keys.F1)
             {
-                button4.PerformClick();
+                macro1.PerformClick();
             }
             else if (e.KeyCode == Keys.F2)
             {
@@ -63,20 +67,73 @@ namespace QSOLink_Logbook
             }
             else if (e.KeyCode == Keys.F3)
             {
-                Refresh.PerformClick();
+                macro3.PerformClick();
             }
             else if (e.KeyCode == Keys.F4)
             {
-                button1.PerformClick();
+                macro4.PerformClick();
             }
-            else if (e.KeyCode == Keys.F5)
+
+        }
+
+        private void MacroButtonsSetup()
+        {
+            //Properties.Settings.Default.MacroButton1
+
+
+            // Macro Button 1
+            string[] labels1 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex1 = Properties.Settings.Default.MacroButton1;
+            if (selectedIndex1 >= 0 && selectedIndex1 < labels1.Length)
             {
-                button5.PerformClick();
+                string label1 = labels1[selectedIndex1];
+                macro1.Text = label1;
             }
-            else if (e.KeyCode == Keys.F6)
+            else
             {
-                button2.PerformClick();
+                macro1.Text = "Invalid";
             }
+
+            // Macro Button 2
+            string[] labels2 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex2 = Properties.Settings.Default.MacroButton2;
+            if (selectedIndex2 >= 0 && selectedIndex2 < labels2.Length)
+            {
+                string label2 = labels2[selectedIndex2];
+                macro2.Text = label2;
+            }
+            else
+            {
+                macro2.Text = "Invalid";
+            }
+
+            // Macro Button 3
+            string[] labels3 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex3 = Properties.Settings.Default.MacroButton3;
+            if (selectedIndex3 >= 0 && selectedIndex3 < labels3.Length)
+            {
+                string label3 = labels3[selectedIndex3];
+                macro3.Text = label3;
+            }
+            else
+            {
+                macro3.Text = "Invalid";
+            }
+
+            // Macro Button 4
+            string[] labels4 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex4 = Properties.Settings.Default.MacroButton4;
+            if (selectedIndex4 >= 0 && selectedIndex4 < labels4.Length)
+            {
+                string label4 = labels4[selectedIndex4];
+                macro4.Text = label4;
+            }
+            else
+            {
+                macro4.Text = "Invalid";
+            }
+
+
 
         }
 
@@ -142,9 +199,49 @@ namespace QSOLink_Logbook
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddContactForm = new AddContact(contacts);
-            AddContactForm.ShowDialog();
-            RefreshContacts(false);
+            string[] labels4 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex4 = Properties.Settings.Default.MacroButton4;
+
+            if (selectedIndex4 >= 0 && selectedIndex4 < labels4.Length)
+            {
+                string label = labels4[selectedIndex4];
+                macro4.Text = label;
+
+                switch (selectedIndex4)
+                {
+                    case 0:
+                        RefreshContacts(false);
+                        break;
+                    case 1:
+                        AddContactForm = new AddContact(contacts);
+                        AddContactForm.ShowDialog();
+                        RefreshContacts(false);
+                        break;
+                    case 2:
+                        System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
+                        break;
+                    case 3:
+                        SaveContactsToBinary(true);
+                        break;
+                    case 4:
+                        RefreshContacts(true);
+                        SaveContactsToBinary(false);
+                        break;
+                    case 5:
+                        ExportADIF_Click();
+                        break;
+                    case 6:
+                        ImportADIF_Click();
+                        break;
+                    default:
+                        MessageBox.Show("Error: Invalid Macro Button Code. Please report this error message on our Github Page (s.lopastudio.sk/issue).", "Backend Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                }
+            }
+            else
+            {
+                macro4.Text = "MacroButtonError";
+            }
         }
 
         private void RefreshContacts(bool SaveFileDialogShow)
@@ -273,17 +370,57 @@ namespace QSOLink_Logbook
 
         private void EditButton_TEMP_Click(object sender, EventArgs e)
         {
-            RefreshContacts(false);
+            string[] labels3 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex3 = Properties.Settings.Default.MacroButton3;
+
+            if (selectedIndex3 >= 0 && selectedIndex3 < labels3.Length)
+            {
+                string label = labels3[selectedIndex3];
+                macro3.Text = label;
+
+                switch (selectedIndex3)
+                {
+                    case 0:
+                        RefreshContacts(false);
+                        break;
+                    case 1:
+                        AddContactForm = new AddContact(contacts);
+                        AddContactForm.ShowDialog();
+                        RefreshContacts(false);
+                        break;
+                    case 2:
+                        System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
+                        break;
+                    case 3:
+                        SaveContactsToBinary(true);
+                        break;
+                    case 4:
+                        RefreshContacts(true);
+                        SaveContactsToBinary(false);
+                        break;
+                    case 5:
+                        ExportADIF_Click();
+                        break;
+                    case 6:
+                        ImportADIF_Click();
+                        break;
+                    default:
+                        MessageBox.Show("Error: Invalid Macro Button Code. Please report this error message on our Github Page (s.lopastudio.sk/issue).", "Backend Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                }
+            }
+            else
+            {
+                macro3.Text = "MacroButtonError";
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             // Not in use anymore
         }
-
-        private void button3_Click(object sender, EventArgs e) // Print button
-        {
-            string tempHtmlFilePath = Path.Combine(Path.GetTempPath(), "tempPrint.html");
+        /* Printing code
+         string tempHtmlFilePath = Path.Combine(Path.GetTempPath(), "tempPrint.html");
             ExportToHtml(tempHtmlFilePath);
 
             if (File.Exists(tempHtmlFilePath))
@@ -298,6 +435,52 @@ namespace QSOLink_Logbook
             else
             {
                 MessageBox.Show("The HTML file does not exist.");
+            } 
+        */
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string[] labels2 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex2 = Properties.Settings.Default.MacroButton2;
+
+            if (selectedIndex2 >= 0 && selectedIndex2 < labels2.Length)
+            {
+                string label = labels2[selectedIndex2];
+                macro2.Text = label;
+
+                switch (selectedIndex2)
+                {
+                    case 0:
+                        RefreshContacts(false);
+                        break;
+                    case 1:
+                        AddContactForm = new AddContact(contacts);
+                        AddContactForm.ShowDialog();
+                        RefreshContacts(false);
+                        break;
+                    case 2:
+                        System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
+                        break;
+                    case 3:
+                        SaveContactsToBinary(true);
+                        break;
+                    case 4:
+                        RefreshContacts(true);
+                        SaveContactsToBinary(false);
+                        break;
+                    case 5:
+                        ExportADIF_Click();
+                        break;
+                    case 6:
+                        ImportADIF_Click();
+                        break;
+                    default:
+                        MessageBox.Show("Error: Invalid Macro Button Code. Please report this error message on our Github Page (s.lopastudio.sk/issue).", "Backend Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                }
+            }
+            else
+            {
+                macro2.Text = "MacroButtonError";
             }
         }
 
@@ -322,14 +505,50 @@ namespace QSOLink_Logbook
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
+            string[] labels1 = { "Refresh", "Add Contact", "Help", "Save as", "Load", "Export to ADIF", "Import ADIF" };
+            int selectedIndex1 = Properties.Settings.Default.MacroButton1;
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (selectedIndex1 >= 0 && selectedIndex1 < labels1.Length)
             {
-                string htmlFilePath = saveFileDialog.FileName;
-                ExportToHtml(htmlFilePath);
+                string label = labels1[selectedIndex1];
+                macro1.Text = label;
+
+                switch (selectedIndex1)
+                {
+                    case 0:
+                        RefreshContacts(false);
+                        break;
+                    case 1:
+                        AddContactForm = new AddContact(contacts);
+                        AddContactForm.ShowDialog();
+                        RefreshContacts(false);
+                        break;
+                    case 2:
+                        System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
+                        break;
+                    case 3:
+                        SaveContactsToBinary(true);
+                        break;
+                    case 4:
+                        RefreshContacts(true);
+                        SaveContactsToBinary(false);
+                        break;
+                    case 5:
+                        ExportADIF_Click();
+                        break;
+                    case 6:
+                        ImportADIF_Click();
+                        break;
+                    default:
+                        MessageBox.Show("Error: Invalid Macro Button Code. Please report this error message on our Github Page (s.lopastudio.sk/issue).", "Backend Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                }
             }
+            else
+            {
+                macro1.Text = "MacroButtonError";
+            }
+
         }
 
         private void SaveContactsToBinary()
@@ -585,11 +804,19 @@ namespace QSOLink_Logbook
                 filePath = "Contacts.dat";
             }
 
-            using (FileStream stream = new FileStream(filePath, System.IO.FileMode.Create))
+            try
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, contacts);
+                using (FileStream stream = new FileStream(filePath, System.IO.FileMode.Create))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(stream, contacts);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "File Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -633,6 +860,18 @@ namespace QSOLink_Logbook
         {
             RefreshContacts(true);
             SaveContactsToBinary(false);
+        }
+
+        private void exportToHTMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "HTML files (*.html)|*.html|All files (*.*)|*.*";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string htmlFilePath = saveFileDialog.FileName;
+                ExportToHtml(htmlFilePath);
+            }
         }
     }
 
