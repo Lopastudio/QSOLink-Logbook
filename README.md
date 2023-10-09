@@ -17,7 +17,7 @@
    <img src="https://img.shields.io/github/issues-closed/Lopastudio/QSOLink-Logbook">
    <br>
    <br>
-   <img src="https://repobeats.axiom.co/api/embed/4f816b049bbc42e53f44225e7d4c72c6345d5b0c.svg">
+   <img src="https://repobeats.axiom.co/api/embed/4f816b049bbc42e53f44225e7d4c72c6345d5b0c.svg"></img>
 </p>
 
 
