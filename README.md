@@ -21,9 +21,9 @@
 </p>
 
 
-## Application will request an admin privileges, because of the way, it writes data to its own program files folder. This is an temporary bug!
+### Application will request an admin privileges, because of the way, it writes data to its own program files folder. This is an temporary bug!
 
-### New update every week :)
+
 
 ## About
 
