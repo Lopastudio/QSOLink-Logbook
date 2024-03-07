@@ -21,13 +21,19 @@
 </p>
 
 
-### Application will request an admin privileges, because of the way, it writes data to its own program files folder. This is an temporary bug!
+### Full release coming on 29th of May 2024 (29.3.2024) - Contest
 
 
 
 ## About
 
-QsoLink Logbook is a user-friendly digital QSO logging software designed for ease of use.
+QsoLink Logbook is a user-friendly radioamateur logging software designed to be simple.
+Final release will include:
+- General logging
+- Contest mode
+- Multiple logbooks support
+- Automatic log website generator / updater (to ftp website)
+
 
 ## Download
 Firstly, install dotNet framework: https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48
