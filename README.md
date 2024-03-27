@@ -50,14 +50,10 @@ If you find a bug or want to request a new feature, please open an issue [here](
 
 | Task                                           | Status |
 | ---------------------------------------------- | ------ |
-| Make the printing function work.               | ❌     |
-| Finish the Wiki page.                          | ❌     |
-| Add the REMOVE button.                         | ✅     |
-| Improve the user interface.                    | ✅     |
-| Add PDF or RTF export option.                  | ✅     |
-| Clean up and optimize the code.                | ✅     |
-| Create an installer.                           | ✅     |
-| Fix known bugs.                                | ✅     |
+| Automatic log uploads (html)                   | ❌     |
+| Add multiple logbook support                   | ❌     |
+| Start new idea (contesting mode)               | ❌     |
+
 
 ## Known Bugs
 
