@@ -9,6 +9,7 @@ namespace QSOLink_Logbook
         public string Rig { get; set; }
         public bool DisplayCallSign { get; set; }
         public bool updateAlert { get; set; }
+        public bool locserv { get; set; }
 
 
 

@@ -1,7 +1,5 @@
-﻿using QSOLink_Logbook.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Printing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -10,18 +8,24 @@ using Octokit;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using SelectPdf;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Sockets;
+using System.Threading;
+using System.Device.Location;
+using System.Xml.Xsl;
 
 namespace QSOLink_Logbook
 {
     public partial class QSOLinkLogBookWindow : Form
     {
-        public string Version = "v3.4-Alpha"; // CHANGE THIS WHEN A NEW VERSION COMES OUT!!!
+        public string Version = "v4.0-Alpha"; // CHANGE THIS WHEN A NEW VERSION COMES OUT!!!
 
         private AddContact AddContactForm = new AddContact();
+        private Changelog ChangelogForm = new Changelog();
         private Settings SettingsForm = new Settings();
         private List<ContactInfo> contacts = new List<ContactInfo>();
+        private System.Windows.Forms.Timer timer;
+
+        private GeoCoordinateWatcher watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Default);
 
         public QSOLinkLogBookWindow()
         {
@@ -32,18 +36,28 @@ namespace QSOLink_Logbook
             MacroButtonsSetup();
             this.KeyDown += Form1_KeyDown;
 
+            // Initialize the timer
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 10000;
+            timer.Tick += Timer_Tick;
+
 
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
+            LocationMessage();
         }
+
+        bool location_services_enabled = false;
 
         private void LoadSettings()
         {
             AppSettings settings = SettingsManager.LoadSettings();
             CallsignLabel.Text = settings.Callsign;
+            location_services_enabled = settings.locserv;
             CallsignLabel.Visible = settings.DisplayCallSign;
             MacroButtonsSetup();
 
@@ -63,6 +77,7 @@ namespace QSOLink_Logbook
             }
             else if (e.KeyCode == Keys.F2)
             {
+                macro2.PerformClick();
                 // button3.PerformClick(); Print button - Disabled
             }
             else if (e.KeyCode == Keys.F3)
@@ -274,6 +289,7 @@ namespace QSOLink_Logbook
 
             dataGridView1.DataSource = contacts;
 
+            /*
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 DataGridViewCell cell = row.Cells["IsDX"];
@@ -282,6 +298,7 @@ namespace QSOLink_Logbook
                     cell.ReadOnly = true;
                 }
             }
+            */
 
             // Hide the "indexNumber" column
             if (dataGridView1.Columns.Contains("indexNumber"))
@@ -630,7 +647,7 @@ namespace QSOLink_Logbook
                         adifContent.AppendLine($"<RX_FREQ:{contact.RXFreq?.Length}>{contact.RXFreq}");
                         adifContent.AppendLine($"<POWER:{contact.Power?.Length}>{contact.Power}");
                         adifContent.AppendLine($"<TIME_ON:{contact.Time?.Length}>{contact.Time}");
-                        adifContent.AppendLine($"<DXCC:{(contact.IsDX ? "1" : "0")}>");
+                        adifContent.AppendLine($"<LOCATOR:{contact.Locator?.Length}>{contact.Locator}");
                         adifContent.AppendLine($"<COMMENT:{contact.CustomComments?.Length}>{contact.CustomComments}");
                         adifContent.AppendLine("<EOR>"); // End of record marker
                     }
@@ -717,11 +734,11 @@ namespace QSOLink_Logbook
                             currentContact.Time = ExtractValueFromADIFLine(line);
                         }
                     }
-                    else if (line.StartsWith("<DXCC:"))
+                    else if (line.StartsWith("<LOCATOR:"))
                     {
                         if (currentContact != null)
                         {
-                            currentContact.IsDX = ExtractValueFromADIFLine(line).Equals("1", StringComparison.OrdinalIgnoreCase);
+                            currentContact.Locator = ExtractValueFromADIFLine(line);
                         }
                     }
                     else if (line.StartsWith("<COMMENT:"))
@@ -768,11 +785,6 @@ namespace QSOLink_Logbook
         private void button2_Click(object sender, EventArgs e)
         {
             ExportADIF_Click();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void CallsignLabel_Click(object sender, EventArgs e)
@@ -873,6 +885,184 @@ namespace QSOLink_Logbook
                 ExportToHtml(htmlFilePath);
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("OMG, Another easteregg!");
+        }
+
+        // Telnet part: 
+
+        private Process telnetProcess;
+
+        private void connectTelnetBackendToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // MessageBox.Show("Runs");
+            string exePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Telnet-Interface.exe");
+
+            if (File.Exists(exePath))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = exePath,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardInput = true,
+                    CreateNoWindow = true
+                };
+
+                telnetProcess = new Process
+                {
+                    StartInfo = startInfo
+                };
+
+                telnetProcess.OutputDataReceived += (s, eventArgs) =>
+                {
+                    if (!string.IsNullOrEmpty(eventArgs.Data))
+                    {
+                        // Add the new item at the top of the ListBox
+                        Telnet.Invoke((MethodInvoker)delegate {
+                            Telnet.Items.Insert(0, eventArgs.Data);
+                        });
+
+                        // Scroll to the bottom (top index)
+                        Telnet.Invoke((MethodInvoker)delegate {
+                            Telnet.TopIndex = 0;
+                        });
+                    }
+                };
+
+                try
+                {
+                    telnetProcess.Start();
+                    telnetProcess.BeginOutputReadLine();
+
+                    timer.Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error starting Telnet process: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Telnet-Interface.exe not found in the application directory.");
+            }
+        }
+        
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            telnetProcess.StandardInput.WriteLine();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+
+            if (telnetProcess != null && !telnetProcess.HasExited)
+            {
+                try
+                {
+                    telnetProcess.StandardInput.WriteLine(textBox1.Text);
+                    textBox1.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error writing to Telnet process: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Telnet process is not running.");
+            }
+        }
+
+        private void changelogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangelogForm = new Changelog();
+            ChangelogForm.ShowDialog();
+        }
+
+        // GPS Garbage:
+
+
+        private static readonly string StrChrUp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private static readonly string StrChrLo = "abcdefghijklmnopqrstuvwxyz";
+        private static readonly string StrNum = "0123456789";
+
+        private string CalculateQthDec(double latitude, double longitude)
+        {
+            if (location_services_enabled == true)
+            {
+                latitude += 90; // Shift latitude range from [-90, 90] to [0, 180]
+                longitude += 180; // Shift longitude range from [-180, 180] to [0, 360]
+
+                // Calculate Maidenhead Grid Square
+                char[] gridSquare = new char[6];
+                gridSquare[0] = StrChrUp[(int)(longitude / 20)]; // 1st digit: 20-degree longitude slot
+                gridSquare[1] = StrChrUp[(int)(latitude / 10)]; // 2nd digit: 10-degree latitude slot
+                gridSquare[2] = StrNum[(int)((longitude % 20) / 2)]; // 3rd digit: 2-degree longitude slot
+                gridSquare[3] = StrNum[(int)((latitude % 10) / 1)]; // 4th digit: 1-degree latitude slot
+                gridSquare[4] = StrChrLo[(int)((longitude % 10) % 2 * 12)]; // 5th digit: 5-minute longitude slot
+                gridSquare[5] = StrChrLo[(int)((latitude % 10) % 2 * 24)]; // 6th digit: 2.5-minute latitude slot
+
+                return new string(gridSquare);
+            }
+            else
+            {
+                MessageBox.Show("Couldn't calculate gridsquare: You must enable location services in the settings of QSOLink-Logbook for this functionality to work.");
+                return "";
+            }
+        }
+
+
+
+        private void LocationMessage()
+        {
+            watcher.Start();
+            watcher.PositionChanged += (sender, e) =>
+            {
+                var coordinate = e.Position.Location;
+                // Output latitude and longitude
+                //MessageBox.Show("Latitude: " + coordinate.Latitude + "  ;  Longitude: " + coordinate.Longitude);
+
+                string gridSquare = CalculateQthDec(coordinate.Latitude, coordinate.Longitude);
+                locator_text.Text = gridSquare;
+                watcher.Stop();
+            };
+        }
+
+
+        /*
+        // Check if the device is ready
+        if (watcher.Status == GeoPositionStatus.Ready)
+        {
+            // Start retrieving location information
+            watcher.Start();
+
+            // Wait for the position to be obtained
+            watcher.PositionChanged += (sender, e) =>
+            {
+                var coordinate = e.Position.Location;
+
+                // Output latitude and longitude
+                MessageBox.Show("Latitude: " + coordinate.Latitude + "  ;  Longitude: " + coordinate.Longitude);
+
+                // Stop the watcher
+                watcher.Stop();
+            };
+
+            MessageBox.Show("Getting location...");
+        }
+        else
+        {
+            MessageBox.Show("Location service is not available.");
+        }*/
+
+        private void getGpsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            LocationMessage();
+        }
     }
 
     public class Values
@@ -893,7 +1083,7 @@ namespace QSOLink_Logbook
         public string RXFreq { get; set; }
         public string Time { get; set; }
         public string Power { get; set; }
-        public bool IsDX { get; set; }
+        public string Locator { get; set; }
         public string CustomComments { get; set; }
     }
 }

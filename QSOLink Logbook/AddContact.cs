@@ -40,7 +40,7 @@ namespace QSOLink_Logbook
                 RXFreq = RXFreq.Text.ToString(),
                 Time = dateTimePicker1.Value.ToString(),
                 Power = PowerTextbox.Text.ToString(),
-                IsDX = IsDX.Checked,
+                Locator = locator.Text,
                 CustomComments = richTextBox1.Text
             };
 
@@ -50,7 +50,10 @@ namespace QSOLink_Logbook
 
             MessageBox.Show("Contact saved successfully!");
 
-            Close();
+            if (closeAuto.Checked)
+            {
+                Close();
+            }
         }
 
         private async Task<string> FetchCountryFromQRZ(string callSign)
@@ -151,6 +154,31 @@ namespace QSOLink_Logbook
         private void pictureBox3_Click(object sender, EventArgs e) // Help button
         {
             System.Diagnostics.Process.Start("https://github.com/Lopastudio/QSOLink-Logbook/wiki");
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PowerTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CountryLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeAuto_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

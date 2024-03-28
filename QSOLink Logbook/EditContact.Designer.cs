@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditContact));
             this.label1 = new System.Windows.Forms.Label();
-            this.IsDX = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.Country_Textfield = new System.Windows.Forms.TextBox();
@@ -54,6 +53,8 @@
             this.PowerTextbox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.locator = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,16 +67,6 @@
             this.label1.Size = new System.Drawing.Size(185, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Edit your existing contact";
-            // 
-            // IsDX
-            // 
-            this.IsDX.AutoSize = true;
-            this.IsDX.Location = new System.Drawing.Point(245, 107);
-            this.IsDX.Name = "IsDX";
-            this.IsDX.Size = new System.Drawing.Size(58, 17);
-            this.IsDX.TabIndex = 1;
-            this.IsDX.Text = "Is DX?";
-            this.IsDX.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -317,11 +308,28 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.WaitOnLoad = true;
             // 
+            // locator
+            // 
+            this.locator.Location = new System.Drawing.Point(294, 107);
+            this.locator.Name = "locator";
+            this.locator.Size = new System.Drawing.Size(153, 20);
+            this.locator.TabIndex = 28;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(243, 110);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 14);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Locator";
+            // 
             // EditContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 279);
+            this.Controls.Add(this.locator);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.PowerTextbox);
             this.Controls.Add(this.label8);
@@ -345,7 +353,6 @@
             this.Controls.Add(this.Country_Textfield);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.IsDX);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditContact";
@@ -360,7 +367,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox IsDX;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox Country_Textfield;
@@ -384,5 +390,7 @@
         private System.Windows.Forms.TextBox PowerTextbox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox locator;
+        private System.Windows.Forms.Label label9;
     }
 }

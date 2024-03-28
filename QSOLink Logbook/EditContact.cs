@@ -58,7 +58,7 @@ namespace QSOLink_Logbook
                     RSTRcvd.Text = contactToDisplay.RSTRcvd;
                     TXFreq.Text = contactToDisplay.TXFreq;
                     RXFreq.Text = contactToDisplay.RXFreq;
-                    IsDX.Checked = contactToDisplay.IsDX;
+                    locator.Text = contactToDisplay.Locator;
                     richTextBox1.Text = contactToDisplay.CustomComments;
                     label2.Text = "Editing Contact: " + contactToDisplay.CallSign.ToString();
                 }
@@ -118,7 +118,7 @@ namespace QSOLink_Logbook
                 RXFreq = RXFreq.Text.ToString(),
                 Power = PowerTextbox.Text.ToString(),
                 Time = dateTimePicker1.Value.ToString(),
-                IsDX = IsDX.Checked,
+                Locator = locator.Text,
                 CustomComments = richTextBox1.Text
             };
 
@@ -135,7 +135,7 @@ namespace QSOLink_Logbook
                 contactToUpdate.TXFreq = updatedContact.TXFreq;
                 contactToUpdate.RXFreq = updatedContact.RXFreq;
                 contactToUpdate.Time = updatedContact.Time;
-                contactToUpdate.IsDX = updatedContact.IsDX;
+                contactToUpdate.Locator = updatedContact.Locator;
                 contactToUpdate.CustomComments = updatedContact.CustomComments;
 
                 SaveContactsToBinary();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
@@ -8,14 +9,55 @@ namespace QSOLink_Logbook
 {
     public partial class Settings : Form
     {
+        private Dev DevForm = new Dev();
+
         public Settings()
         {
             InitializeComponent();
             LoadSettings();
+
         }
 
         private void LoadSettings()
         {
+
+            // Telnet
+            string host = "";
+            string port = "";
+            string callsign = "";
+
+            try
+            {
+                // Specify the path to your text file
+                string filePath = "config.txt";
+
+                // Read all lines from the file
+                string[] lines = File.ReadAllLines(filePath);
+
+                // Check if we have at least 3 lines
+                if (lines.Length < 3)
+                {
+                    Console.WriteLine("File does not contain enough lines.");
+                    return;
+                }
+
+                // Extract the values from the lines
+                host = lines[0].Trim();
+                port = lines[1].Trim();
+                callsign = lines[2].Trim();
+
+                // Now you can use these values as needed
+                textBox1.Text = (host);
+                textBox2.Text = (port);
+                textBox3.Text = (callsign);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while reading config file: {ex.Message}");
+                return;
+            }
+
+
             try
             {
                 //Macro Button 1
@@ -49,6 +91,7 @@ namespace QSOLink_Logbook
                         DisplayCallSign.Checked = loadedSettings.DisplayCallSign;
                         updateAlert.Checked = loadedSettings.updateAlert;
                         Rig.Text = loadedSettings.Rig;
+                        locserv.Checked = loadedSettings.locserv;
                         // AlphaWarn.Checked = loadedSettings.AlphaWarn;
                     }
                 }
@@ -70,6 +113,7 @@ namespace QSOLink_Logbook
                     DisplayCallSign = DisplayCallSign.Checked,
                     updateAlert = updateAlert.Checked,
                     Rig = Rig.Text,
+                    locserv = locserv.Checked
                 };
 
                 using (FileStream fs = new FileStream("settings.bin", FileMode.Create))
@@ -89,6 +133,32 @@ namespace QSOLink_Logbook
             {
                 MessageBox.Show($"Error applying settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+
+
+            try
+            {
+                // Specify the path to your text file
+                string filePath = "config.txt";
+
+                // Open the file for writing (creating if it doesn't exist, and overwriting if it does)
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    // Write the host, port, and callsign to the file
+                    writer.WriteLine(textBox1.Text); // Assuming textBox1, textBox2, textBox3 are your UI elements
+                    writer.WriteLine(textBox2.Text);
+                    writer.WriteLine(textBox3.Text);
+                }
+
+                Console.WriteLine("Config file written successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while writing config file: {ex.Message}");
+            }
+
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,5 +179,25 @@ namespace QSOLink_Logbook
         {
             Properties.Settings.Default.MacroButton4 = comboBox4.SelectedIndex;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openDevWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DevForm = new Dev();
+            DevForm.ShowDialog();
+        }
+
+         
+        
+
     }
 }

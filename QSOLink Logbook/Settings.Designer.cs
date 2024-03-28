@@ -48,6 +48,21 @@
             this.updateAlert = new System.Windows.Forms.CheckBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.openDevWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.locserv = new System.Windows.Forms.CheckBox();
+            this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DisplayCallSign
@@ -62,8 +77,8 @@
             // Title
             // 
             this.Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Title.Font = new System.Drawing.Font("RomanD", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title.Location = new System.Drawing.Point(111, 9);
+            this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title.Location = new System.Drawing.Point(161, 24);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(240, 40);
             this.Title.TabIndex = 2;
@@ -97,7 +112,7 @@
             // 
             // ApplyButton
             // 
-            this.ApplyButton.Location = new System.Drawing.Point(12, 210);
+            this.ApplyButton.Location = new System.Drawing.Point(12, 438);
             this.ApplyButton.Name = "ApplyButton";
             this.ApplyButton.Size = new System.Drawing.Size(85, 23);
             this.ApplyButton.TabIndex = 6;
@@ -133,7 +148,7 @@
             "Load",
             "Export to ADIF",
             "Import ADIF"});
-            this.comboBox1.Location = new System.Drawing.Point(248, 70);
+            this.comboBox1.Location = new System.Drawing.Point(6, 19);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
@@ -150,7 +165,7 @@
             "Load",
             "Export to ADIF",
             "Import ADIF"});
-            this.comboBox2.Location = new System.Drawing.Point(248, 98);
+            this.comboBox2.Location = new System.Drawing.Point(6, 47);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 10;
@@ -167,7 +182,7 @@
             "Load",
             "Export to ADIF",
             "Import ADIF"});
-            this.comboBox3.Location = new System.Drawing.Point(248, 125);
+            this.comboBox3.Location = new System.Drawing.Point(6, 74);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 11;
@@ -176,38 +191,38 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(375, 73);
+            this.label4.Location = new System.Drawing.Point(133, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 13);
+            this.label4.Size = new System.Drawing.Size(101, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Macro Button 1";
+            this.label4.Text = "Macro Button 1 (F1)";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(375, 101);
+            this.label5.Location = new System.Drawing.Point(133, 50);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 13);
+            this.label5.Size = new System.Drawing.Size(101, 13);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Macro Button 2";
+            this.label5.Text = "Macro Button 2 (F2)";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(375, 128);
+            this.label6.Location = new System.Drawing.Point(133, 77);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.Size = new System.Drawing.Size(101, 13);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Macro Button 3";
+            this.label6.Text = "Macro Button 3 (F3)";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(375, 156);
+            this.label7.Location = new System.Drawing.Point(133, 105);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.Size = new System.Drawing.Size(101, 13);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Macro Button 4";
+            this.label7.Text = "Macro Button 4 (F4)";
             // 
             // label8
             // 
@@ -238,7 +253,7 @@
             "Load",
             "Export to ADIF",
             "Import ADIF"});
-            this.comboBox4.Location = new System.Drawing.Point(248, 152);
+            this.comboBox4.Location = new System.Drawing.Point(6, 101);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 20;
@@ -254,22 +269,133 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "Disabling is not recommended.";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.comboBox4);
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Location = new System.Drawing.Point(12, 301);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(239, 131);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Macro button actions";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openDevWindowToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(563, 24);
+            this.menuStrip1.TabIndex = 26;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // openDevWindowToolStripMenuItem
+            // 
+            this.openDevWindowToolStripMenuItem.Name = "openDevWindowToolStripMenuItem";
+            this.openDevWindowToolStripMenuItem.Size = new System.Drawing.Size(118, 20);
+            this.openDevWindowToolStripMenuItem.Text = "Open Dev Window";
+            this.openDevWindowToolStripMenuItem.Click += new System.EventHandler(this.openDevWindowToolStripMenuItem_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Location = new System.Drawing.Point(312, 320);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(239, 95);
+            this.groupBox2.TabIndex = 26;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "DX-Cluster (telnet) settings";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(112, 74);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Login Callsign";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(13, 67);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(92, 20);
+            this.textBox3.TabIndex = 31;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(112, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Telnet Port";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(13, 43);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(92, 20);
+            this.textBox2.TabIndex = 29;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(112, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Telnet Host";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(13, 20);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(92, 20);
+            this.textBox1.TabIndex = 27;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(111, 198);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(201, 13);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Use location services (gridsquare lookup)";
+            // 
+            // locserv
+            // 
+            this.locserv.AutoSize = true;
+            this.locserv.Location = new System.Drawing.Point(12, 198);
+            this.locserv.Name = "locserv";
+            this.locserv.Size = new System.Drawing.Size(15, 14);
+            this.locserv.TabIndex = 27;
+            this.locserv.UseVisualStyleBackColor = true;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 245);
+            this.ClientSize = new System.Drawing.Size(563, 472);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.locserv);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.updateAlert);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Rig);
             this.Controls.Add(this.ApplyButton);
@@ -278,9 +404,17 @@
             this.Controls.Add(this.Callsign);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.DisplayCallSign);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Settings";
             this.Text = "Settings";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +441,17 @@
         private System.Windows.Forms.CheckBox updateAlert;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem openDevWindowToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox locserv;
     }
 }
