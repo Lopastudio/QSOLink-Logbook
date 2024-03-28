@@ -30,8 +30,8 @@
 QsoLink Logbook is a user-friendly radioamateur logging software designed to be simple.
 Final release will include:
 - General logging
-- Contest mode
 - Multiple logbooks support
+- Automatic locator updates (for portable use)
 - Automatic log website generator / updater (to ftp website)
 
 
