@@ -640,6 +640,8 @@ namespace QSOLink_Logbook
                         adifContent.AppendLine($"<CALL:{contact.CallSign?.Length}>{contact.CallSign} <RST_RCVD:{contact.RSTRcvd?.Length}>{contact.RSTRcvd} <RST_SENT:{contact.RSTSent?.Length}>{contact.RSTSent} <MODE:{contact.Mode?.Length}>{contact.Mode} <FREQ:{contact.TXFreq?.Length}>{contact.TXFreq}");
                         adifContent.AppendLine("<EOR>"); // End of record marker
                         // <QSO_DATE:8>{contact.QSODate} <TIME_ON:6>{contact.TimeOn} <BAND:{contact.Band?.Length}>{contact.Band}
+
+                        // Work-In-Progress
                     }
                 }
             }

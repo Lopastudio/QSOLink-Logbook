@@ -56,6 +56,8 @@
             "     - Added changelog",
             "     - Added \"DEV / Debug Menu\"",
             "     - Added locator support",
+            "     - Work-In-Progress: Making ADIF work :/ (adif files are not compatible, plea" +
+                "ses use the DATA format until next revision, I promise, Ill fix it :))",
             "",
             "v3.4 - Alpha",
             "     - UI Modifications",
@@ -101,8 +103,7 @@
             "     - Added app logic",
             "     - Modified the application to use Binary insted of Yaml to store data",
             "     - Added \"Add contact\"",
-            "     - Added \"Editing contacts\"",
-            ""});
+            "     - Added \"Editing contacts\""});
             this.listBox1.Location = new System.Drawing.Point(12, 62);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(776, 368);
