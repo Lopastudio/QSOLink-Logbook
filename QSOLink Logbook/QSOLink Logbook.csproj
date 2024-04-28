@@ -280,6 +280,7 @@
       <DependentUpon>AddContact.cs</DependentUpon>
     </Compile>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="BandDetect.cs" />
     <Compile Include="Changelog.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Octokit;
+using System;
 using System.Collections.Generic;
+using System.Device.Location;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Windows.Forms;
-using Octokit;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Net.Sockets;
-using System.Threading;
-using System.Device.Location;
-using System.Xml.Xsl;
+using System.Windows.Forms;
 
 namespace QSOLink_Logbook
 {
@@ -187,7 +184,7 @@ namespace QSOLink_Logbook
             }
         }
 
-        
+
 
 
         private async Task<Release> CheckForUpdatesAsync()
@@ -638,18 +635,11 @@ namespace QSOLink_Logbook
                 {
                     if (contact != null) // Check if contact is not null
                     {
-                        adifContent.AppendLine($"<CALL:{contact.CallSign?.Length}>{contact.CallSign}");
-                        adifContent.AppendLine($"<COUNTRY:{contact.Country?.Length}>{contact.Country}");
-                        adifContent.AppendLine($"<MODE:{contact.Mode?.Length}>{contact.Mode}");
-                        adifContent.AppendLine($"<RST_SENT:{contact.RSTSent?.Length}>{contact.RSTSent}");
-                        adifContent.AppendLine($"<RST_RCVD:{contact.RSTRcvd?.Length}>{contact.RSTRcvd}");
-                        adifContent.AppendLine($"<TX_FREQ:{contact.TXFreq?.Length}>{contact.TXFreq}");
-                        adifContent.AppendLine($"<RX_FREQ:{contact.RXFreq?.Length}>{contact.RXFreq}");
-                        adifContent.AppendLine($"<POWER:{contact.Power?.Length}>{contact.Power}");
-                        adifContent.AppendLine($"<TIME_ON:{contact.Time?.Length}>{contact.Time}");
-                        adifContent.AppendLine($"<LOCATOR:{contact.Locator?.Length}>{contact.Locator}");
-                        adifContent.AppendLine($"<COMMENT:{contact.CustomComments?.Length}>{contact.CustomComments}");
+
+                        // Add the mandatory ADIF fields with proper formatting
+                        adifContent.AppendLine($"<CALL:{contact.CallSign?.Length}>{contact.CallSign} <RST_RCVD:{contact.RSTRcvd?.Length}>{contact.RSTRcvd} <RST_SENT:{contact.RSTSent?.Length}>{contact.RSTSent} <MODE:{contact.Mode?.Length}>{contact.Mode} <FREQ:{contact.TXFreq?.Length}>{contact.TXFreq}");
                         adifContent.AppendLine("<EOR>"); // End of record marker
+                        // <QSO_DATE:8>{contact.QSODate} <TIME_ON:6>{contact.TimeOn} <BAND:{contact.Band?.Length}>{contact.Band}
                     }
                 }
             }
@@ -678,53 +668,11 @@ namespace QSOLink_Logbook
                         currentContact = new ContactInfo();
                         currentContact.CallSign = ExtractValueFromADIFLine(line);
                     }
-                    else if (line.StartsWith("<COUNTRY:"))
+                    else if (line.StartsWith("<QSO_DATE:"))
                     {
                         if (currentContact != null)
                         {
-                            currentContact.Country = ExtractValueFromADIFLine(line);
-                        }
-                    }
-                    else if (line.StartsWith("<MODE:"))
-                    {
-                        if (currentContact != null)
-                        {
-                            currentContact.Mode = ExtractValueFromADIFLine(line);
-                        }
-                    }
-                    else if (line.StartsWith("<RST_SENT:"))
-                    {
-                        if (currentContact != null)
-                        {
-                            currentContact.RSTSent = ExtractValueFromADIFLine(line);
-                        }
-                    }
-                    else if (line.StartsWith("<RST_RCVD:"))
-                    {
-                        if (currentContact != null)
-                        {
-                            currentContact.RSTRcvd = ExtractValueFromADIFLine(line);
-                        }
-                    }
-                    else if (line.StartsWith("<TX_FREQ:"))
-                    {
-                        if (currentContact != null)
-                        {
-                            currentContact.TXFreq = ExtractValueFromADIFLine(line);
-                        }
-                    }
-                    else if (line.StartsWith("<RX_FREQ:"))
-                    {
-                        if (currentContact != null)
-                        {
-                            currentContact.RXFreq = ExtractValueFromADIFLine(line);
-                        }
-                    }
-                    else if (line.StartsWith("<POWER:"))
-                    {
-                        if (currentContact != null)
-                        {
-                            currentContact.Power = ExtractValueFromADIFLine(line);
+                            currentContact.Time = ExtractValueFromADIFLine(line);
                         }
                     }
                     else if (line.StartsWith("<TIME_ON:"))
@@ -734,25 +682,58 @@ namespace QSOLink_Logbook
                             currentContact.Time = ExtractValueFromADIFLine(line);
                         }
                     }
-                    else if (line.StartsWith("<LOCATOR:"))
+                    else if (line.StartsWith("<RST_RCVD:"))
                     {
                         if (currentContact != null)
                         {
-                            currentContact.Locator = ExtractValueFromADIFLine(line);
+                            currentContact.RSTRcvd = ExtractValueFromADIFLine(line);
                         }
                     }
-                    else if (line.StartsWith("<COMMENT:"))
+                    else if (line.StartsWith("<RST_SENT:"))
                     {
                         if (currentContact != null)
                         {
-                            currentContact.CustomComments = ExtractValueFromADIFLine(line);
+                            currentContact.RSTSent = ExtractValueFromADIFLine(line);
                         }
                     }
-                }
+                    else if (line.StartsWith("<FREQ:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.TXFreq = ExtractValueFromADIFLine(line);
 
-                if (currentContact != null)
-                {
-                    importedContacts.Add(currentContact);
+                            // string frequency = ExtractValueFromADIFLine(line);
+                            // currentContact.Band = DetermineBandFromFrequency(frequency);
+                        }
+                    }
+                    else if (line.StartsWith("<FREQ_RX:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.RXFreq = ExtractValueFromADIFLine(line);
+
+                            // string frequency = ExtractValueFromADIFLine(line);
+                            // currentContact.Band = DetermineBandFromFrequency(frequency);
+                        }
+                    }
+                    else if (line.StartsWith("<MODE:"))
+                    {
+                        if (currentContact != null)
+                        {
+                            currentContact.Mode = ExtractValueFromADIFLine(line);
+                        }
+                    }
+                    // Add other fields as needed
+
+                    // EOR indicates the end of a contact record
+                    else if (line.StartsWith("<EOR>"))
+                    {
+                        if (currentContact != null)
+                        {
+                            importedContacts.Add(currentContact);
+                            currentContact = null; // Reset current contact for the next record
+                        }
+                    }
                 }
 
                 MessageBox.Show("Contacts imported successfully!");
@@ -766,15 +747,15 @@ namespace QSOLink_Logbook
             return importedContacts;
         }
 
+
         private string ExtractValueFromADIFLine(string line)
         {
             int startIndex = line.IndexOf('>') + 1;
-            if (startIndex < line.Length)
-            {
-                return line.Substring(startIndex).Trim();
-            }
-            return string.Empty;
+            int length = int.Parse(line.Substring(6, line.IndexOf('>') - 6));
+            return line.Substring(startIndex, length);
         }
+
+
 
 
         private void button5_Click(object sender, EventArgs e)
@@ -921,12 +902,14 @@ namespace QSOLink_Logbook
                     if (!string.IsNullOrEmpty(eventArgs.Data))
                     {
                         // Add the new item at the top of the ListBox
-                        Telnet.Invoke((MethodInvoker)delegate {
+                        Telnet.Invoke((MethodInvoker)delegate
+                        {
                             Telnet.Items.Insert(0, eventArgs.Data);
                         });
 
                         // Scroll to the bottom (top index)
-                        Telnet.Invoke((MethodInvoker)delegate {
+                        Telnet.Invoke((MethodInvoker)delegate
+                        {
                             Telnet.TopIndex = 0;
                         });
                     }
@@ -949,7 +932,7 @@ namespace QSOLink_Logbook
                 MessageBox.Show("Telnet-Interface.exe not found in the application directory.");
             }
         }
-        
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             telnetProcess.StandardInput.WriteLine();
@@ -957,7 +940,7 @@ namespace QSOLink_Logbook
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            
+
 
             if (telnetProcess != null && !telnetProcess.HasExited)
             {

@@ -117,7 +117,8 @@ namespace QSOLink_Logbook
         private void SaveContactsToBinary(bool SaveFileDialogShow)
         {
             string filePath = "";
-            if (SaveFileDialogShow == true) {
+            if (SaveFileDialogShow == true)
+            {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "QSOLink Data Files|*.DAT";
 
@@ -177,6 +178,16 @@ namespace QSOLink_Logbook
         }
 
         private void closeAuto_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TXFreq_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }
